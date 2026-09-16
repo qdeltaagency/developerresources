@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>INDEX — The Curated Web Index</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..24,400,0..1,0" rel="stylesheet"/>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    .scrollbar-none::-webkit-scrollbar { display: none; }
+    .scrollbar-none { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Custom Entrance Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-card {
+      animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      opacity: 0;
+    }
+
+    /* Waveform Animation for 21st.dev */
+    @keyframes soundWave {
+      0%, 100% {
+        transform: scaleY(0.4);
+      }
+      50% {
+        transform: scaleY(1);
+      }
+    }
+
+    .wave-bar {
+      transform-origin: bottom;
+      animation: soundWave 1.4s ease-in-out infinite;
+    }
+
+    /* Shader Shimmer Animation for Aceternity */
+    @keyframes shaderShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .shader-glow {
+      background: linear-gradient(120deg, #18181b, #27272a, #312e81, #18181b);
+      background-size: 250% 250%;
+      animation: shaderShift 7s ease infinite;
+    }
+
+    /* Spline slow spin */
+    @keyframes smoothSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .spin-slow {
+      animation: smoothSpin 18s linear infinite;
+    }
+
+    /* Card Micro-interaction Lift */
+    .craft-card {
+      transition: transform 0.28s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.28s ease, border-color 0.2s ease;
+    }
+
+    .craft-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -10px rgba(79, 70, 229, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+      border-color: #c7d2fe;
+    }
+
+    /* Bookmark Bounce */
+    .btn-bookmark {
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), color 0.15s ease, border-color 0.15s ease;
+    }
+    .btn-bookmark:hover {
+      transform: scale(1.15);
+    }
+
+    /* Filter button smooth state */
+    .filter-pill {
+      transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .filter-pill:hover:not(.filter-active) {
+      transform: translateY(-1px);
+    }
+
+    /* Lucide Icon Bounce */
+    .icon-tile {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.15s ease, background-color 0.15s ease;
+    }
+    .icon-tile:hover {
+      transform: translateY(-2px) scale(1.1);
+    }
+
+    /* Visit Button Link Micro-interaction */
+    .visit-btn .material-symbols-outlined {
+      transition: transform 0.2s ease;
+    }
+    .craft-card:hover .visit-btn .material-symbols-outlined {
+      transform: translate(2px, -2px);
+    }
+
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .animate-card,
+      .wave-bar,
+      .shader-glow,
+      .spin-slow,
+      .craft-card,
+      .btn-bookmark,
+      .filter-pill,
+      .icon-tile,
+      .visit-btn .material-symbols-outlined {
+        animation: none !important;
+        transition: none !important;
+        transform: none !important;
+      }
+      .animate-card {
+        opacity: 1 !important;
+      }
+    }
+</style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface": "#fcfcfd",
+            "surface-dim": "#f4f5f7",
+            "surface-card": "#ffffff",
+            "charcoal": "#18181b",
+            "charcoal-muted": "#27272a",
+            "on-surface": "#121316",
+            "on-surface-variant": "#525866",
+            "border-subtle": "#e4e7ec",
+            "border-strong": "#d0d5dd",
+            "accent-emerald": "#059669",
+            "accent-amber": "#d97706"
+          },
+          fontFamily: {
+            "sans": ["Geist", "-apple-system", "BlinkMacSystemFont", "sans-serif"],
+            "mono": ["JetBrains Mono", "monospace"]
+          }
+        }
+      }
+    };
+</script>
+</head>
+<body class="bg-[#fcfcfd] font-sans text-on-surface antialiased min-h-screen flex flex-col selection:bg-zinc-900 selection:text-white">
+<!-- Minimal Sticky Top Navigation -->
+<header class="fixed top-0 w-full z-50 bg-[#fcfcfd]/90 backdrop-blur-md border-b border-zinc-200/80 transition-colors">
+<div class="max-w-7xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between gap-6">
+<!-- Brand & Version -->
+<div class="flex items-center gap-3 shrink-0">
+<a class="flex items-center gap-2 group" href="#">
+<div class="w-6 h-6 bg-zinc-900 rounded-[5px] flex items-center justify-center transition-transform duration-300 group-hover:scale-105">
+<div class="w-2.5 h-2.5 bg-zinc-100 rotate-45 transition-transform duration-300 group-hover:rotate-90"></div>
+</div>
+<span class="font-bold text-[16px] tracking-tight uppercase text-zinc-900">INDEX</span>
+</a>
+<span class="font-mono text-[11px] font-medium bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded-[4px] border border-zinc-200/70">v1.0</span>
+</div>
+<!-- Quick Search Bar with Focus Glow micro-interaction -->
+<div class="flex-1 max-w-md hidden md:block">
+<div class="relative flex items-center group">
+<span class="material-symbols-outlined absolute left-3.5 text-zinc-400 text-[18px] pointer-events-none transition-colors group-focus-within:text-indigo-600">search</span>
+<input class="w-full h-9 pl-10 pr-12 bg-zinc-50/80 hover:bg-zinc-100/70 focus:bg-white border border-zinc-200/90 rounded-md text-[13px] text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-indigo-500 focus:ring-3 focus:ring-indigo-500/15 transition-all duration-200 font-sans" placeholder="Search 160+ curated web tools..." type="text" value="cryptocurrency trading bot"/>
+<button class="absolute right-2.5 w-5 h-5 flex items-center justify-center rounded-full bg-zinc-200 hover:bg-zinc-300 text-zinc-600 transition-colors cursor-pointer" title="Clear search"><span class="material-symbols-outlined text-[13px]">close</span></button>
+</div>
+</div>
+<!-- Right Nav Links & CTA -->
+<div class="flex items-center gap-6 shrink-0">
+<nav class="hidden lg:flex items-center gap-6 text-[13px] font-medium">
+<a class="text-zinc-900 font-semibold" href="#">Directory</a>
+<a class="text-zinc-500 hover:text-zinc-900 transition-colors duration-150" href="#">Categories</a>
+<a class="text-zinc-500 hover:text-zinc-900 transition-colors duration-150" href="#">Stacks</a>
+</nav>
+<a class="group inline-flex items-center gap-1.5 h-8 px-3.5 bg-zinc-900 hover:bg-zinc-800 active:scale-98 text-white text-[12px] font-medium rounded-md shadow-2xs transition-all duration-150" href="#">
+<span>Suggest Resource</span>
+<span class="material-symbols-outlined text-[13px] transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">north_east</span>
+</a>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="w-full pt-16 flex-1 bg-[#fcfcfd]">
+<div class="max-w-7xl mx-auto px-6 md:px-8 py-8 md:py-10">
+<!-- HERO SECTION -->
+<section class="mb-7"><div class="text-center max-w-3xl mx-auto"><h1 class="text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 mb-3">The Curated Web Index</h1><p class="text-[15px] md:text-base text-zinc-600 max-w-2xl mx-auto leading-relaxed">Handpicked tools, interaction libraries, and UI kits for modern web craft.</p></div></section>
+<!-- Horizontal Pill Filter Bar & View Controls -->
+<section class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-zinc-200/60">
+<!-- Filter Pills with smooth scale & cubic transitions -->
+<div class="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-1">
+<button class="filter-pill filter-active whitespace-nowrap px-3.5 py-1.5 rounded-md text-[13px] font-medium bg-zinc-900 text-white shadow-xs active:scale-95" data-category="all">
+          All
+        </button>
+<button class="filter-pill whitespace-nowrap px-3.5 py-1.5 rounded-md text-[13px] font-medium bg-white text-zinc-600 border border-zinc-200/80 hover:text-zinc-900 hover:border-zinc-300 hover:bg-zinc-50 active:scale-95" data-category="react">
+          React Components
+        </button>
+<button class="filter-pill whitespace-nowrap px-3.5 py-1.5 rounded-md text-[13px] font-medium bg-white text-zinc-600 border border-zinc-200/80 hover:text-zinc-900 hover:border-zinc-300 hover:bg-zinc-50 active:scale-95" data-category="motion">
+          Motion &amp; 3D
+        </button>
+<button class="filter-pill whitespace-nowrap px-3.5 py-1.5 rounded-md text-[13px] font-medium bg-white text-zinc-600 border border-zinc-200/80 hover:text-zinc-900 hover:border-zinc-300 hover:bg-zinc-50 active:scale-95" data-category="tailwind">
+          CSS &amp; Tailwind
+        </button>
+<button class="filter-pill whitespace-nowrap px-3.5 py-1.5 rounded-md text-[13px] font-medium bg-white text-zinc-600 border border-zinc-200/80 hover:text-zinc-900 hover:border-zinc-300 hover:bg-zinc-50 active:scale-95" data-category="boilerplates">
+          Boilerplates
+        </button>
+<button class="filter-pill whitespace-nowrap px-3.5 py-1.5 rounded-md text-[13px] font-medium bg-white text-zinc-600 border border-zinc-200/80 hover:text-zinc-900 hover:border-zinc-300 hover:bg-zinc-50 active:scale-95" data-category="icons">
+          Icons
+        </button>
+<button class="filter-pill whitespace-nowrap px-3.5 py-1.5 rounded-md text-[13px] font-medium bg-white text-zinc-600 border border-zinc-200/80 hover:text-zinc-900 hover:border-zinc-300 hover:bg-zinc-50 active:scale-95" data-category="foss">
+          Open Source
+        </button>
+</div>
+<!-- Sort & View Controls -->
+<div class="flex items-center gap-2.5 shrink-0 self-end md:self-auto">
+<button class="inline-flex items-center gap-1.5 h-8 px-3 bg-white border border-zinc-200/80 rounded-md text-[13px] font-medium text-zinc-800 hover:bg-zinc-50 hover:border-zinc-300 shadow-2xs transition-all active:scale-98">
+<span class="material-symbols-outlined text-[16px] text-zinc-400">tune</span>
+<span>Sort: <strong class="font-semibold text-zinc-900">Featured</strong></span>
+<span class="material-symbols-outlined text-[15px] text-zinc-400">expand_more</span>
+</button>
+<div class="inline-flex bg-zinc-100 p-0.5 rounded-md border border-zinc-200/80">
+<button class="p-1 rounded bg-white text-zinc-900 shadow-2xs transition-all" title="Grid View">
+<span class="material-symbols-outlined text-[16px] block">grid_view</span>
+</button>
+<button class="p-1 rounded text-zinc-500 hover:text-zinc-900 transition-colors" title="List View">
+<span class="material-symbols-outlined text-[16px] block">view_headline</span>
+</button>
+</div>
+</div>
+</section>
+<!-- TOP GOOGLE ADS SLOT: Clean Neutral Leaderboard Banner (728x90) -->
+<!-- RESOURCE CARDS GRID: 3 Columns - Bespoke Editorial & Tactile UI with Staggered Entrance -->
+<section class="py-16 my-6 flex flex-col items-center justify-center text-center max-w-2xl mx-auto"><div class="w-16 h-16 rounded-full bg-zinc-100 border border-zinc-200 flex items-center justify-center mb-6 shadow-2xs"><span class="material-symbols-outlined text-[28px] text-zinc-400">search_off</span></div><h2 class="text-[20px] md:text-headline-md font-semibold text-zinc-950 tracking-tight mb-2">No curated tools found for “cryptocurrency trading bot”</h2><p class="text-[14px] text-zinc-500 max-w-lg leading-relaxed mb-8">We strictly index frontend libraries, UI kits, and creative web tools. Try searching for “React”, “Shader”, or “Icons”.</p><div class="flex flex-wrap items-center justify-center gap-3 mb-10"><button class="inline-flex items-center gap-1.5 h-9 px-4 bg-zinc-900 hover:bg-zinc-800 active:scale-95 text-white text-[13px] font-medium rounded-md shadow-2xs transition-all"><span class="material-symbols-outlined text-[15px]">close</span><span>Clear search query</span></button><a class="inline-flex items-center gap-1.5 h-9 px-4 bg-white hover:bg-zinc-50 text-zinc-800 text-[13px] font-medium rounded-md border border-zinc-200 hover:border-zinc-300 shadow-2xs transition-all active:scale-95" href="#"><span class="material-symbols-outlined text-[15px] text-zinc-400">add_circle</span><span>Suggest a tool to index</span></a></div><div class="flex flex-col items-center gap-3 pt-6 border-t border-zinc-200/80 w-full"><span class="text-[12px] font-medium uppercase tracking-wider text-zinc-400 font-mono">Popular Searches</span><div class="flex flex-wrap items-center justify-center gap-2"><button class="px-3 py-1 bg-white hover:bg-zinc-50 border border-zinc-200/90 rounded-md text-[12px] font-medium text-zinc-700 hover:text-zinc-950 shadow-2xs transition-all hover:border-zinc-300">Tailwind v4</button><button class="px-3 py-1 bg-white hover:bg-zinc-50 border border-zinc-200/90 rounded-md text-[12px] font-medium text-zinc-700 hover:text-zinc-950 shadow-2xs transition-all hover:border-zinc-300">Framer Motion</button><button class="px-3 py-1 bg-white hover:bg-zinc-50 border border-zinc-200/90 rounded-md text-[12px] font-medium text-zinc-700 hover:text-zinc-950 shadow-2xs transition-all hover:border-zinc-300">Lucide Icons</button><button class="px-3 py-1 bg-white hover:bg-zinc-50 border border-zinc-200/90 rounded-md text-[12px] font-medium text-zinc-700 hover:text-zinc-950 shadow-2xs transition-all hover:border-zinc-300">Shadcn Primitives</button><button class="px-3 py-1 bg-white hover:bg-zinc-50 border border-zinc-200/90 rounded-md text-[12px] font-medium text-zinc-700 hover:text-zinc-950 shadow-2xs transition-all hover:border-zinc-300">WebGL Shaders</button></div></div></section>
+<!-- MID-PAGE NATIVE GOOGLE AD SLOT: Refined Neutral Format -->
+<!-- SECOND BATCH RESOURCE CARDS (Items 7, 8, 9) with Continued Stagger -->
+<!-- Load More / Pagination Block -->
+</div>
+</main>
+<!-- Clean Minimal Footer -->
+<footer class="w-full bg-white border-t border-zinc-200/80 mt-auto">
+<div class="max-w-7xl mx-auto px-6 md:px-8 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-zinc-500">
+<div>
+      © 2025 INDEX Directory. Built with precision for digital craftspeople.
+    </div>
+<div class="flex items-center gap-6">
+<a class="hover:text-zinc-900 transition-colors" href="#">Privacy</a>
+<a class="hover:text-zinc-900 transition-colors" href="#">Terms</a>
+<a class="hover:text-zinc-900 transition-colors" href="#">Feed</a>
+</div>
+</div>
+</footer>
+<script>
+  // Micro-interactions for discovery filters with smooth state shifts
+  const filterButtons = document.querySelectorAll('.filter-pill');
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => {
+        b.classList.remove('bg-zinc-900', 'text-white', 'shadow-xs', 'filter-active');
+        b.classList.add('bg-white', 'text-zinc-600', 'border', 'border-zinc-200/80');
+      });
+      btn.classList.add('bg-zinc-900', 'text-white', 'shadow-xs', 'filter-active');
+      btn.classList.remove('bg-white', 'text-zinc-600', 'border', 'border-zinc-200/80');
+    });
+  });
+
+  const loadMoreBtn = document.getElementById('load-more-btn');
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener('click', () => {
+      loadMoreBtn.innerHTML = `
+        <span class="inline-block w-3.5 h-3.5 border-2 border-zinc-900 border-t-transparent rounded-full animate-spin"></span>
+        <span>Loading catalog...</span>
+      `;
+      setTimeout(() => {
+        loadMoreBtn.innerHTML = `
+          <span>Showing 9 of 164 Resources</span>
+          <span class="font-mono text-[11px] text-zinc-600 px-1.5 py-0.5 rounded bg-zinc-100 border border-zinc-200/80">All synced</span>
+        `;
+      }, 600);
+    });
+  }
+</script>
+</body></html>
