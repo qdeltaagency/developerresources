@@ -117,7 +117,7 @@ export const Header: React.FC<HeaderProps> = ({
 
   return (
     <header className="fixed top-0 w-full z-40 bg-[#fcfcfd]/90 backdrop-blur-md border-b border-zinc-200/80 transition-colors">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 h-16 flex items-center justify-between gap-6">
+      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 h-16 flex items-center justify-between gap-6">
         {/* Brand & Version */}
         <div className="flex items-center gap-3 shrink-0">
           <button

@@ -159,7 +159,7 @@ export default function HomePage() {
 
       {/* Main Content Area */}
       <main className="w-full pt-16 flex-1">
-        <div className="max-w-7xl mx-auto px-6 md:px-8 py-8 md:py-10">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-8 md:py-10">
           {/* HERO SECTION - Page Load Entrance Animation */}
           <motion.section
             initial={{ opacity: 0, y: 16 }}
