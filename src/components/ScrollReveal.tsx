@@ -39,11 +39,11 @@ export const ScrollReveal: React.FC<ScrollRevealProps> = ({
     <motion.div
       initial={getInitialPosition()}
       whileInView={{ opacity: 1, x: 0, y: 0 }}
-      viewport={{ once: true, margin: "-30px" }}
+      viewport={{ once: true, margin: "0px 0px -60px 0px" }}
       transition={{
         duration,
         delay,
-        ease: [0.21, 0.47, 0.32, 0.98],
+        ease: [0.16, 1, 0.3, 1],
       }}
       className={className}
     >

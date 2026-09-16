@@ -316,9 +316,9 @@ export default function HomePage() {
                 )
               )}
 
-              {/* Load More / Catalog sync pagination - Scroll Reveal */}
-              <ScrollReveal direction="up" delay={0.1}>
-                <section className="pt-8 pb-6 flex flex-col items-center justify-center">
+              {/* Load More / Catalog sync pagination - Scroll Reveal with enhanced delay */}
+              <ScrollReveal direction="up" delay={0.22} duration={0.6} distance={24}>
+                <section className="pt-10 pb-8 flex flex-col items-center justify-center">
                   {hasMore ? (
                     <button
                       onClick={handleLoadMore}
@@ -348,7 +348,7 @@ export default function HomePage() {
                     </div>
                   )}
 
-                  {/* Direct Category Jump Links */}
+                  {/* Direct Category Jump Links with delayed staggered entrance */}
                   <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-[13px] text-zinc-500">
                     <span>Jump to:</span>
                     <button
@@ -395,8 +395,8 @@ export default function HomePage() {
         </div>
       </main>
 
-      {/* Clean Minimal Footer - Scroll Reveal */}
-      <ScrollReveal direction="up" delay={0.05}>
+      {/* Clean Minimal Footer - Scroll Reveal with smooth delay */}
+      <ScrollReveal direction="up" delay={0.3} duration={0.65} distance={20}>
         <Footer />
       </ScrollReveal>
 

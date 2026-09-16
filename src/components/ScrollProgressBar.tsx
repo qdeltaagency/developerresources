@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, useScroll, useSpring } from "framer-motion";
+import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 
 export const ScrollProgressBar: React.FC = () => {
@@ -33,18 +33,21 @@ export const ScrollProgressBar: React.FC = () => {
       />
 
       {/* Floating Back-to-Top Button on Scroll */}
-      {showBackToTop && (
-        <motion.button
-          initial={{ opacity: 0, scale: 0.8, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.8, y: 10 }}
-          onClick={scrollToTop}
-          className="fixed bottom-6 right-6 z-40 w-10 h-10 rounded-full bg-white border border-zinc-200/90 shadow-md hover:shadow-lg flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:border-zinc-400 transition-all cursor-pointer group"
-          title="Back to top"
-        >
-          <ArrowUp className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
-        </motion.button>
-      )}
+      <AnimatePresence>
+        {showBackToTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.85, y: 12 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.85, y: 12 }}
+            transition={{ type: "spring", stiffness: 260, damping: 20 }}
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 z-40 w-10 h-10 rounded-full bg-white border border-zinc-200/90 shadow-md hover:shadow-lg flex items-center justify-center text-zinc-700 hover:text-zinc-950 hover:border-zinc-400 active:scale-95 transition-all cursor-pointer group"
+            title="Back to top"
+          >
+            <ArrowUp className="w-4 h-4 transition-transform group-hover:-translate-y-0.5" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </>
   );
 };
