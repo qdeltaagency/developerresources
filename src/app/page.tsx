@@ -68,6 +68,31 @@ function SkeletonCardGrid({ count = 3 }: { count?: number }) {
   );
 }
 
+function SectionSkeletonGroup({ count = 3 }: { count?: number }) {
+  return (
+    <div className="flex flex-col gap-10">
+      {[...Array(count)].map((_, secIdx) => (
+        <div key={secIdx} className="flex flex-col gap-4">
+          {/* Section Header Skeleton */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-200/90 animate-pulse">
+            <div className="flex items-center gap-2.5">
+              <div className="w-5 h-5 rounded-md bg-zinc-200/80 shrink-0" />
+              <div className="space-y-1.5">
+                <div className="h-4.5 bg-zinc-200/90 rounded-md w-36 sm:w-44" />
+                <div className="h-3 bg-zinc-200/50 rounded w-48 sm:w-72" />
+              </div>
+            </div>
+            <div className="h-8 w-24 rounded-md bg-zinc-200/60 shrink-0 self-start sm:self-auto" />
+          </div>
+
+          {/* 3 Card Skeletons */}
+          <SkeletonCardGrid count={3} />
+        </div>
+      ))}
+    </div>
+  );
+}
+
 export default function HomePage() {
   const router = useRouter();
   const [tools, setTools] = useState<ToolItem[]>([]);
@@ -380,24 +405,34 @@ export default function HomePage() {
                     All Sections
                   </button>
 
-                  {sections.map((sec) => {
-                    const secId = `${sec.slug}-section`;
-                    const isActive = activeSection === secId;
-                    return (
-                      <button
-                        key={sec.slug}
-                        onClick={() => scrollToSection(secId)}
-                        className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-[13px] font-medium transition-all active:scale-95 cursor-pointer ${
-                          isActive
-                            ? "bg-zinc-900 text-white shadow-xs"
-                            : "bg-white text-zinc-700 border border-zinc-200/80 hover:text-zinc-950 hover:border-zinc-300 hover:bg-zinc-50"
-                        }`}
-                      >
-                        {renderSectionIcon(sec.slug, sec.icon, `w-4 h-4 ${isActive ? "text-white" : "text-zinc-900"}`)}
-                        <span>{sec.title}</span>
-                      </button>
-                    );
-                  })}
+                  {isLoading && sections.length === 0 ? (
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <div className="h-8 w-24 rounded-md bg-zinc-200/70 animate-pulse" />
+                      <div className="h-8 w-28 rounded-md bg-zinc-200/60 animate-pulse" />
+                      <div className="h-8 w-20 rounded-md bg-zinc-200/50 animate-pulse" />
+                      <div className="h-8 w-26 rounded-md bg-zinc-200/60 animate-pulse" />
+                      <div className="h-8 w-28 rounded-md bg-zinc-200/50 animate-pulse" />
+                    </div>
+                  ) : (
+                    sections.map((sec) => {
+                      const secId = `${sec.slug}-section`;
+                      const isActive = activeSection === secId;
+                      return (
+                        <button
+                          key={sec.slug}
+                          onClick={() => scrollToSection(secId)}
+                          className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-[13px] font-medium transition-all active:scale-95 cursor-pointer ${
+                            isActive
+                              ? "bg-zinc-900 text-white shadow-xs"
+                              : "bg-white text-zinc-700 border border-zinc-200/80 hover:text-zinc-950 hover:border-zinc-300 hover:bg-zinc-50"
+                          }`}
+                        >
+                          {renderSectionIcon(sec.slug, sec.icon, `w-4 h-4 ${isActive ? "text-white" : "text-zinc-900"}`)}
+                          <span>{sec.title}</span>
+                        </button>
+                      );
+                    })
+                  )}
                 </div>
 
                 {/* Direct Link to View All Catalogue (Sorted Alphabetically) */}
@@ -415,109 +450,113 @@ export default function HomePage() {
           {/* SECTION 1: GROUPED DISCOVERY VIEW (Dynamic sections from database) */}
           {isSectionedMode ? (
             <div className="flex flex-col gap-10">
-              {sections.map((section, secIdx) => {
-                const secTools = tools.filter((t) => t.domain === section.slug);
-                const isCore = ["design", "development", "ai", "backend", "boilerplates"].includes(section.slug);
-                const linkHref = isCore ? `/${section.slug}` : `/directory?category=${section.slug}`;
+              {isLoading && sections.length === 0 ? (
+                <SectionSkeletonGroup count={3} />
+              ) : (
+                sections.map((section, secIdx) => {
+                  const secTools = tools.filter((t) => t.domain === section.slug);
+                  const isCore = ["design", "development", "ai", "backend", "boilerplates"].includes(section.slug);
+                  const linkHref = isCore ? `/${section.slug}` : `/directory?category=${section.slug}`;
 
-                return (
-                  <React.Fragment key={section.slug}>
-                    {secIdx === 0 && (
-                      <ScrollReveal direction="up" delay={0.05}>
-                        <SponsoredBanner variant="vercel" />
-                      </ScrollReveal>
-                    )}
-                    {secIdx === 1 && (
-                      <ScrollReveal direction="up" delay={0.1}>
-                        <SponsoredBanner variant="supabase" />
-                      </ScrollReveal>
-                    )}
-
-                    <section id={`${section.slug}-section`} className="flex flex-col gap-4 scroll-mt-36">
-                      <ScrollReveal direction="up" delay={0.08 + (secIdx % 4) * 0.02}>
-                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-200/90">
-                          <div className="flex items-center gap-2">
-                            {renderSectionIcon(section.slug, section.icon, "w-4.5 h-4.5 text-zinc-900 shrink-0")}
-                            <div>
-                              <h2 className="text-[16px] sm:text-[17.5px] font-semibold text-zinc-950 tracking-tight">
-                                {section.title}
-                              </h2>
-                              <p className="text-[12px] text-zinc-500">
-                                {section.description}
-                              </p>
-                            </div>
-                          </div>
-
-                          <Link
-                            href={linkHref}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white hover:bg-zinc-50 text-zinc-800 text-[12.5px] font-medium border border-zinc-200/90 hover:border-zinc-300 shadow-2xs transition-all self-start sm:self-auto group cursor-pointer"
-                          >
-                            <span>View All {secTools.length > 0 ? `(${secTools.length})` : ""}</span>
-                            <ArrowRight className="w-3.5 h-3.5 text-zinc-500 transition-transform group-hover:translate-x-0.5" />
-                          </Link>
-                        </div>
-                      </ScrollReveal>
-
-                      {/* Section Grid (1 single row of 3 cards) */}
-                      {isLoading ? (
-                        <SkeletonCardGrid count={3} />
-                      ) : secTools.length === 0 ? (
-                        <div className="py-8 px-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 text-center">
-                          <p className="text-[13px] text-zinc-500">
-                            No tools published in <span className="font-semibold text-zinc-700">{section.title}</span> yet.
-                          </p>
-                          <Link
-                            href="/manage"
-                            className="mt-1.5 inline-flex items-center gap-1 text-[12px] font-medium text-zinc-900 hover:underline"
-                          >
-                            Add tools in Admin Studio
-                          </Link>
-                        </div>
-                      ) : (
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                          {secTools.slice(0, 3).map((tool, idx) => (
-                            <ScrollReveal
-                              key={tool.id}
-                              direction="up"
-                              distance={16}
-                              delay={idx * 0.04}
-                            >
-                              <ResourceCard
-                                tool={tool}
-                                isBookmarked={bookmarks.includes(tool.id)}
-                                onToggleBookmark={handleToggleBookmark}
-                                delayIndex={idx}
-                              />
-                            </ScrollReveal>
-                          ))}
-                        </div>
+                  return (
+                    <React.Fragment key={section.slug}>
+                      {secIdx === 0 && (
+                        <ScrollReveal direction="up" delay={0.05}>
+                          <SponsoredBanner variant="vercel" />
+                        </ScrollReveal>
                       )}
-                    </section>
-                  </React.Fragment>
-                );
-              })}
+                      {secIdx === 1 && (
+                        <ScrollReveal direction="up" delay={0.1}>
+                          <SponsoredBanner variant="supabase" />
+                        </ScrollReveal>
+                      )}
+
+                      <section id={`${section.slug}-section`} className="flex flex-col gap-4 scroll-mt-36">
+                        <ScrollReveal direction="up" delay={0.08 + (secIdx % 4) * 0.02}>
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-200/90">
+                            <div className="flex items-center gap-2">
+                              {renderSectionIcon(section.slug, section.icon, "w-4.5 h-4.5 text-zinc-900 shrink-0")}
+                              <div>
+                                <h2 className="text-[16px] sm:text-[17.5px] font-semibold text-zinc-950 tracking-tight">
+                                  {section.title}
+                                </h2>
+                                <p className="text-[12px] text-zinc-500">
+                                  {section.description}
+                                </p>
+                              </div>
+                            </div>
+
+                            <Link
+                              href={linkHref}
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white hover:bg-zinc-50 text-zinc-800 text-[12.5px] font-medium border border-zinc-200/90 hover:border-zinc-300 shadow-2xs transition-all self-start sm:self-auto group cursor-pointer"
+                            >
+                              <span>View All {secTools.length > 0 ? `(${secTools.length})` : ""}</span>
+                              <ArrowRight className="w-3.5 h-3.5 text-zinc-500 transition-transform group-hover:translate-x-0.5" />
+                            </Link>
+                          </div>
+                        </ScrollReveal>
+
+                        {/* Section Grid (1 single row of 3 cards) */}
+                        {secTools.length === 0 ? (
+                          <div className="py-8 px-4 rounded-xl border border-dashed border-zinc-200 bg-zinc-50/50 text-center">
+                            <p className="text-[13px] text-zinc-500">
+                              No tools published in <span className="font-semibold text-zinc-700">{section.title}</span> yet.
+                            </p>
+                            <Link
+                              href="/manage"
+                              className="mt-1.5 inline-flex items-center gap-1 text-[12px] font-medium text-zinc-900 hover:underline"
+                            >
+                              Add tools in Admin Studio
+                            </Link>
+                          </div>
+                        ) : (
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                            {secTools.slice(0, 3).map((tool, idx) => (
+                              <ScrollReveal
+                                key={tool.id}
+                                direction="up"
+                                distance={16}
+                                delay={idx * 0.04}
+                              >
+                                <ResourceCard
+                                  tool={tool}
+                                  isBookmarked={bookmarks.includes(tool.id)}
+                                  onToggleBookmark={handleToggleBookmark}
+                                  delayIndex={idx}
+                                />
+                              </ScrollReveal>
+                            ))}
+                          </div>
+                        )}
+                      </section>
+                    </React.Fragment>
+                  );
+                })
+              )}
 
               {/* BOTTOM "VIEW ALL" FULL DIRECTORY CTA BANNER */}
-              <ScrollReveal direction="up" delay={0.2}>
-                <section className="py-5 px-6 sm:py-6 sm:px-8 rounded-xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-5 border border-zinc-800">
-                  <div className="max-w-xl text-center md:text-left">
-                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-1.5">
-                      Explore All Resources
-                    </h3>
-                    <p className="text-[13px] text-zinc-400 leading-relaxed">
-                      Search and filter all {tools.length > 0 ? tools.length : 28}+ curated tools across all categories.
-                    </p>
-                  </div>
+              {!isLoading && sections.length > 0 && (
+                <ScrollReveal direction="up" delay={0.2}>
+                  <section className="py-5 px-6 sm:py-6 sm:px-8 rounded-xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-5 border border-zinc-800">
+                    <div className="max-w-xl text-center md:text-left">
+                      <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-1.5">
+                        Explore All Resources
+                      </h3>
+                      <p className="text-[13px] text-zinc-400 leading-relaxed">
+                        Search and filter all {tools.length > 0 ? tools.length : 28}+ curated tools across all categories.
+                      </p>
+                    </div>
 
-                  <Link
-                    href="/directory"
-                    className="inline-flex items-center justify-center gap-2 h-9.5 px-5 bg-white hover:bg-zinc-100 active:scale-98 text-zinc-950 text-[13px] font-semibold rounded-lg shadow transition-all shrink-0 cursor-pointer group"
-                  >
-                    <span>View All {tools.length > 0 ? tools.length : 28} Tools</span>
-                    <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
-                  </Link>
-                </section>
-              </ScrollReveal>
+                    <Link
+                      href="/directory"
+                      className="inline-flex items-center justify-center gap-2 h-9.5 px-5 bg-white hover:bg-zinc-100 active:scale-98 text-zinc-950 text-[13px] font-semibold rounded-lg shadow transition-all shrink-0 cursor-pointer group"
+                    >
+                      <span>View All {tools.length > 0 ? tools.length : 28} Tools</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                    </Link>
+                  </section>
+                </ScrollReveal>
+              )}
             </div>
           ) : (
             /* SECTION 2: "VIEW ALL" / CATALOGUE VIEW (With Full FilterBar At Top) */
