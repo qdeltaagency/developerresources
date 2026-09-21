@@ -21,7 +21,9 @@ export const viewport: Viewport = {
   initialScale: 1.0,
 };
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://developerresources-qd-elta.vercel.app";
+import { getSiteUrl } from "@/lib/site";
+
+const siteUrl = getSiteUrl();
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
