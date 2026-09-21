@@ -392,57 +392,63 @@ export default function HomePage() {
           {isSectionedMode ? (
             <div className="animate-hero-nav py-2.5 mb-8 border-b border-zinc-200/80 -mx-4 px-4 sm:-mx-6 sm:px-6 transition-all">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 max-w-6xl mx-auto">
-                {/* Title Names Navigation with Active State Tracking */}
-                <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-1">
-                  <button
-                    onClick={() => scrollToSection("all")}
-                    className={`px-3.5 py-1.5 rounded-md text-[13px] font-medium transition-all active:scale-95 cursor-pointer ${
-                      activeSection === "all"
-                        ? "bg-zinc-900 text-white shadow-xs"
-                        : "bg-white text-zinc-700 border border-zinc-200/80 hover:text-zinc-950 hover:border-zinc-300 hover:bg-zinc-50"
-                    }`}
-                  >
-                    All Sections
-                  </button>
-
-                  {isLoading && sections.length === 0 ? (
-                    <div className="flex items-center gap-1.5 shrink-0">
-                      <div className="h-8 w-24 rounded-md bg-zinc-200/70 animate-pulse" />
-                      <div className="h-8 w-28 rounded-md bg-zinc-200/60 animate-pulse" />
-                      <div className="h-8 w-20 rounded-md bg-zinc-200/50 animate-pulse" />
-                      <div className="h-8 w-26 rounded-md bg-zinc-200/60 animate-pulse" />
-                      <div className="h-8 w-28 rounded-md bg-zinc-200/50 animate-pulse" />
+                {isLoading && sections.length === 0 ? (
+                  /* Unified Skeleton for the entire navigation bar while fetching */
+                  <div className="flex items-center justify-between w-full py-1">
+                    <div className="flex items-center gap-2 overflow-hidden">
+                      <div className="h-8 w-24 rounded-md bg-zinc-200/70 animate-pulse shrink-0" />
+                      <div className="h-8 w-28 rounded-md bg-zinc-200/60 animate-pulse shrink-0" />
+                      <div className="h-8 w-20 rounded-md bg-zinc-200/50 animate-pulse shrink-0" />
+                      <div className="h-8 w-24 rounded-md bg-zinc-200/60 animate-pulse shrink-0" />
+                      <div className="h-8 w-28 rounded-md bg-zinc-200/50 animate-pulse shrink-0" />
                     </div>
-                  ) : (
-                    sections.map((sec) => {
-                      const secId = `${sec.slug}-section`;
-                      const isActive = activeSection === secId;
-                      return (
-                        <button
-                          key={sec.slug}
-                          onClick={() => scrollToSection(secId)}
-                          className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-[13px] font-medium transition-all active:scale-95 cursor-pointer ${
-                            isActive
-                              ? "bg-zinc-900 text-white shadow-xs"
-                              : "bg-white text-zinc-700 border border-zinc-200/80 hover:text-zinc-950 hover:border-zinc-300 hover:bg-zinc-50"
-                          }`}
-                        >
-                          {renderSectionIcon(sec.slug, sec.icon, `w-4 h-4 ${isActive ? "text-white" : "text-zinc-900"}`)}
-                          <span>{sec.title}</span>
-                        </button>
-                      );
-                    })
-                  )}
-                </div>
+                    <div className="h-5 w-36 rounded bg-zinc-200/50 animate-pulse shrink-0 hidden sm:block" />
+                  </div>
+                ) : (
+                  <>
+                    {/* Title Names Navigation with Active State Tracking */}
+                    <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-1">
+                      <button
+                        onClick={() => scrollToSection("all")}
+                        className={`px-3.5 py-1.5 rounded-md text-[13px] font-medium transition-all active:scale-95 cursor-pointer ${
+                          activeSection === "all"
+                            ? "bg-zinc-900 text-white shadow-xs"
+                            : "bg-white text-zinc-700 border border-zinc-200/80 hover:text-zinc-950 hover:border-zinc-300 hover:bg-zinc-50"
+                        }`}
+                      >
+                        All Sections
+                      </button>
 
-                {/* Direct Link to View All Catalogue (Sorted Alphabetically) */}
-                <Link
-                  href="/directory"
-                  className="inline-flex items-center gap-1.5 text-[13px] font-medium text-zinc-600 hover:text-zinc-950 transition-colors shrink-0 cursor-pointer self-end sm:self-auto group"
-                >
-                  <span>Explore Full Directory {tools.length > 0 ? `(${tools.length})` : ""}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-950 transition-transform group-hover:translate-x-0.5" />
-                </Link>
+                      {sections.map((sec) => {
+                        const secId = `${sec.slug}-section`;
+                        const isActive = activeSection === secId;
+                        return (
+                          <button
+                            key={sec.slug}
+                            onClick={() => scrollToSection(secId)}
+                            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-[13px] font-medium transition-all active:scale-95 cursor-pointer ${
+                              isActive
+                                ? "bg-zinc-900 text-white shadow-xs"
+                                : "bg-white text-zinc-700 border border-zinc-200/80 hover:text-zinc-950 hover:border-zinc-300 hover:bg-zinc-50"
+                            }`}
+                          >
+                            {renderSectionIcon(sec.slug, sec.icon, `w-4 h-4 ${isActive ? "text-white" : "text-zinc-900"}`)}
+                            <span>{sec.title}</span>
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    {/* Direct Link to View All Catalogue (Sorted Alphabetically) */}
+                    <Link
+                      href="/directory"
+                      className="inline-flex items-center gap-1.5 text-[13px] font-medium text-zinc-600 hover:text-zinc-950 transition-colors shrink-0 cursor-pointer self-end sm:self-auto group"
+                    >
+                      <span>Explore Full Directory {tools.length > 0 ? `(${tools.length})` : ""}</span>
+                      <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-950 transition-transform group-hover:translate-x-0.5" />
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           ) : null}
