@@ -706,10 +706,10 @@ export const AdminStudio: React.FC<AdminStudioProps> = ({ adminKey }) => {
     <div className="min-h-screen bg-[#fcfcfd] text-zinc-900 pb-20">
       {/* Top Admin Header Bar */}
       <header className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-zinc-200/90 py-3 px-4 sm:px-8 shadow-2xs">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <WtfAnimatedBadge />
-            <div>
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+          <div className="flex items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              <WtfAnimatedBadge />
               <div className="flex items-center gap-2">
                 <span className="font-semibold text-zinc-950 text-[15px] tracking-tight font-sans">
                   WTF Studio
@@ -719,13 +719,25 @@ export const AdminStudio: React.FC<AdminStudioProps> = ({ adminKey }) => {
                 </span>
               </div>
             </div>
+
+            {/* Mobile Exit Button */}
+            <div className="flex md:hidden items-center gap-2">
+              <button
+                onClick={handleLockAndExit}
+                className="inline-flex items-center gap-1.5 h-8 px-2.5 rounded-md bg-zinc-100 hover:bg-rose-50 hover:text-rose-700 border border-zinc-200 text-[11.5px] font-medium text-zinc-700 transition-colors cursor-pointer"
+                title="Log out and return to homepage"
+              >
+                <LogOut className="w-3.5 h-3.5" />
+                <span>Exit</span>
+              </button>
+            </div>
           </div>
 
-          {/* Tab Switcher Pills */}
-          <div className="flex items-center gap-1 bg-zinc-100/90 p-1 rounded-lg border border-zinc-200/80 text-[12.5px] font-medium shadow-2xs">
+          {/* Tab Switcher Pills - horizontally scrollable on mobile */}
+          <div className="flex items-center gap-1 bg-zinc-100/90 p-1 rounded-lg border border-zinc-200/80 text-[12px] sm:text-[12.5px] font-medium shadow-2xs overflow-x-auto scrollbar-none touch-pan-x">
             <button
               onClick={() => setActiveTab("tools")}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-md transition-all cursor-pointer shrink-0 ${
                 activeTab === "tools"
                   ? "bg-white text-zinc-950 shadow-xs font-semibold"
                   : "text-zinc-600 hover:text-zinc-950 hover:bg-white/60"
@@ -740,7 +752,7 @@ export const AdminStudio: React.FC<AdminStudioProps> = ({ adminKey }) => {
                 resetSectionForm();
                 setActiveTab("sections");
               }}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-md transition-all cursor-pointer shrink-0 ${
                 activeTab === "sections"
                   ? "bg-white text-zinc-950 shadow-xs font-semibold"
                   : "text-zinc-600 hover:text-zinc-950 hover:bg-white/60"
@@ -755,7 +767,7 @@ export const AdminStudio: React.FC<AdminStudioProps> = ({ adminKey }) => {
                 resetForm();
                 setActiveTab("add");
               }}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all cursor-pointer ${
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-md transition-all cursor-pointer shrink-0 ${
                 activeTab === "add"
                   ? "bg-white text-zinc-950 shadow-xs font-semibold"
                   : "text-zinc-600 hover:text-zinc-950 hover:bg-white/60"
@@ -767,7 +779,7 @@ export const AdminStudio: React.FC<AdminStudioProps> = ({ adminKey }) => {
 
             <button
               onClick={() => setActiveTab("suggestions")}
-              className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md transition-all cursor-pointer relative ${
+              className={`inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-md transition-all cursor-pointer relative shrink-0 ${
                 activeTab === "suggestions"
                   ? "bg-white text-zinc-950 shadow-xs font-semibold"
                   : "text-zinc-600 hover:text-zinc-950 hover:bg-white/60"
@@ -783,8 +795,8 @@ export const AdminStudio: React.FC<AdminStudioProps> = ({ adminKey }) => {
             </button>
           </div>
 
-          {/* Right Action: Log out */}
-          <div className="flex items-center gap-2">
+          {/* Right Action: Log out (desktop) */}
+          <div className="hidden md:flex items-center gap-2">
             <button
               onClick={handleLockAndExit}
               className="inline-flex items-center gap-1.5 h-8.5 px-3 rounded-md bg-zinc-100 hover:bg-rose-50 hover:text-rose-700 hover:border-rose-200 border border-zinc-200 text-[12px] font-medium text-zinc-700 transition-colors cursor-pointer"

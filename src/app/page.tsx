@@ -370,19 +370,19 @@ export default function HomePage() {
       />
 
       {/* Main Content Area */}
-      <main className="w-full pt-16 flex-1">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-8 md:py-10">
+      <main className="w-full pt-16 flex-1 overflow-x-hidden">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 md:px-8 lg:px-12 py-5 sm:py-8 md:py-10 w-full min-w-0">
           {/* HERO SECTION - Instant GPU-accelerated entrance animation */}
-          <section className="mb-7">
-            <div className="text-center max-w-3xl mx-auto">
-              <div className="animate-hero-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-zinc-300 text-[12px] font-semibold text-zinc-800 mb-4 shadow-2xs">
+          <section className="mb-6 sm:mb-7 w-full">
+            <div className="text-center max-w-3xl mx-auto px-1">
+              <div className="animate-hero-badge inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 rounded-full bg-white border border-zinc-300 text-[11.5px] sm:text-[12px] font-semibold text-zinc-800 mb-3 sm:mb-4 shadow-2xs">
                 <Sparkles className="w-3.5 h-3.5 text-zinc-900" />
                 <span>The Curated Developer Directory</span>
               </div>
-              <h1 className="animate-hero-title text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950 mb-3 font-sans">
-                Web Tools Finder <span className="text-zinc-400 font-normal text-2xl md:text-4xl">(WTF)</span>
+              <h1 className="animate-hero-title text-2xl sm:text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950 mb-2.5 sm:mb-3 font-sans break-words">
+                Web Tools Finder <span className="text-zinc-400 font-normal text-xl sm:text-2xl md:text-4xl">(WTF)</span>
               </h1>
-              <p className="animate-hero-subtitle text-base md:text-[17px] text-zinc-700 max-w-2xl mx-auto leading-relaxed">
+              <p className="animate-hero-subtitle text-[14px] sm:text-base md:text-[17px] text-zinc-700 max-w-2xl mx-auto leading-relaxed break-words">
                 Handpicked UI primitives, interaction engines, serverless databases, and AI tooling organized by domain.
               </p>
             </div>
@@ -390,8 +390,8 @@ export default function HomePage() {
 
           {/* SECTION NAVIGATION FOR CURRENT PAGE (Scrolls naturally with content) */}
           {isSectionedMode ? (
-            <div className="animate-hero-nav py-2.5 mb-8 border-b border-zinc-300 -mx-4 px-4 sm:-mx-6 sm:px-6 transition-all">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 max-w-6xl mx-auto">
+            <div className="animate-hero-nav py-2 mb-6 sm:mb-8 border-b border-zinc-300 w-full min-w-0 overflow-hidden">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 max-w-6xl mx-auto w-full min-w-0">
                 {isLoading && sections.length === 0 ? (
                   /* Unified Skeleton for the entire navigation bar while fetching */
                   <div className="flex items-center justify-between w-full py-1">
@@ -407,10 +407,10 @@ export default function HomePage() {
                 ) : (
                   <>
                     {/* Title Names Navigation with Active State Tracking */}
-                    <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-1">
+                    <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-1 touch-pan-x w-full min-w-0">
                       <button
                         onClick={() => scrollToSection("all")}
-                        className={`px-3.5 py-1.5 rounded-md text-[13px] font-semibold transition-all active:scale-95 cursor-pointer ${
+                        className={`px-3 sm:px-3.5 py-1.5 rounded-md text-[12px] sm:text-[13px] font-semibold transition-all active:scale-95 cursor-pointer shrink-0 ${
                           activeSection === "all"
                             ? "bg-zinc-950 text-white shadow-xs"
                             : "bg-white text-zinc-800 border border-zinc-300 hover:text-zinc-950 hover:border-zinc-400 hover:bg-zinc-50 shadow-2xs"
@@ -426,7 +426,7 @@ export default function HomePage() {
                           <button
                             key={sec.slug}
                             onClick={() => scrollToSection(secId)}
-                            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-[13px] font-semibold transition-all active:scale-95 cursor-pointer ${
+                            className={`inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-1.5 rounded-md text-[12px] sm:text-[13px] font-semibold transition-all active:scale-95 cursor-pointer shrink-0 ${
                               isActive
                                 ? "bg-zinc-950 text-white shadow-xs"
                                 : "bg-white text-zinc-800 border border-zinc-300 hover:text-zinc-950 hover:border-zinc-400 hover:bg-zinc-50 shadow-2xs"
@@ -442,7 +442,7 @@ export default function HomePage() {
                     {/* Direct Link to View All Catalogue (Sorted Alphabetically) */}
                     <Link
                       href="/directory"
-                      className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-700 hover:text-zinc-950 transition-colors shrink-0 cursor-pointer self-end sm:self-auto group"
+                      className="inline-flex items-center justify-between sm:justify-start gap-1.5 text-[12px] sm:text-[13px] font-semibold text-zinc-700 hover:text-zinc-950 transition-colors shrink-0 cursor-pointer self-start sm:self-auto group pt-1 sm:pt-0"
                     >
                       <span>Explore Full Directory {tools.length > 0 ? `(${tools.length})` : ""}</span>
                       <ArrowRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-950 transition-transform group-hover:translate-x-0.5" />
@@ -455,7 +455,7 @@ export default function HomePage() {
 
           {/* SECTION 1: GROUPED DISCOVERY VIEW (Dynamic sections from database) */}
           {isSectionedMode ? (
-            <div className="flex flex-col gap-10">
+            <div className="flex flex-col gap-8 sm:gap-10 w-full min-w-0">
               {isLoading && sections.length === 0 ? (
                 <SectionSkeletonGroup count={3} />
               ) : (
@@ -477,16 +477,16 @@ export default function HomePage() {
                         </ScrollReveal>
                       )}
 
-                      <section id={`${section.slug}-section`} className="flex flex-col gap-4 scroll-mt-36">
+                      <section id={`${section.slug}-section`} className="flex flex-col gap-3.5 sm:gap-4 scroll-mt-36 w-full min-w-0">
                         <ScrollReveal direction="up" delay={0.08 + (secIdx % 4) * 0.02}>
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-300">
-                            <div className="flex items-center gap-2">
-                              {renderSectionIcon(section.slug, section.icon, "w-4.5 h-4.5 text-zinc-950 shrink-0")}
-                              <div>
-                                <h2 className="text-[17px] sm:text-[19px] font-bold text-zinc-950 tracking-tight">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 pb-3 border-b border-zinc-300 w-full min-w-0">
+                            <div className="flex items-start sm:items-center gap-2 min-w-0 flex-1">
+                              {renderSectionIcon(section.slug, section.icon, "w-4.5 h-4.5 text-zinc-950 shrink-0 mt-0.5 sm:mt-0")}
+                              <div className="min-w-0 flex-1">
+                                <h2 className="text-[16px] sm:text-[19px] font-bold text-zinc-950 tracking-tight truncate">
                                   {section.title}
                                 </h2>
-                                <p className="text-[14px] sm:text-[14.5px] text-zinc-700 leading-normal mt-0.5">
+                                <p className="text-[13px] sm:text-[14.5px] text-zinc-700 leading-normal mt-0.5 break-words">
                                   {section.description}
                                 </p>
                               </div>
@@ -494,7 +494,7 @@ export default function HomePage() {
 
                             <Link
                               href={linkHref}
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white hover:bg-zinc-100 text-zinc-900 text-[12.5px] font-semibold border border-zinc-300 hover:border-zinc-400 shadow-2xs transition-all self-start sm:self-auto group cursor-pointer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white hover:bg-zinc-100 text-zinc-900 text-[12px] sm:text-[12.5px] font-semibold border border-zinc-300 hover:border-zinc-400 shadow-2xs transition-all self-start sm:self-auto group cursor-pointer shrink-0"
                             >
                               <span>View All {secTools.length > 0 ? `(${secTools.length})` : ""}</span>
                               <ArrowRight className="w-3.5 h-3.5 text-zinc-600 transition-transform group-hover:translate-x-0.5" />
@@ -516,7 +516,7 @@ export default function HomePage() {
                             </Link>
                           </div>
                         ) : (
-                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                             {secTools.slice(0, 3).map((tool, idx) => (
                               <ScrollReveal
                                 key={tool.id}
@@ -543,19 +543,19 @@ export default function HomePage() {
               {/* BOTTOM "VIEW ALL" FULL DIRECTORY CTA BANNER */}
               {!isLoading && sections.length > 0 && (
                 <ScrollReveal direction="up" delay={0.2}>
-                  <section className="py-5 px-6 sm:py-6 sm:px-8 rounded-xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 text-white shadow-lg flex flex-col md:flex-row items-center justify-between gap-5 border border-zinc-800">
-                    <div className="max-w-xl text-center md:text-left">
-                      <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white mb-1.5">
+                  <section className="py-5 px-4 sm:py-6 sm:px-8 rounded-xl bg-gradient-to-br from-zinc-900 via-zinc-950 to-zinc-900 text-white shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-4 sm:gap-5 border border-zinc-800">
+                    <div className="max-w-xl text-left">
+                      <h3 className="text-lg sm:text-2xl font-bold tracking-tight text-white mb-1">
                         Explore All Resources
                       </h3>
-                      <p className="text-[13px] text-zinc-400 leading-relaxed">
+                      <p className="text-[12.5px] sm:text-[13px] text-zinc-400 leading-relaxed">
                         Search and filter all {tools.length > 0 ? tools.length : 28}+ curated tools across all categories.
                       </p>
                     </div>
 
                     <Link
                       href="/directory"
-                      className="inline-flex items-center justify-center gap-2 h-9.5 px-5 bg-white hover:bg-zinc-100 active:scale-98 text-zinc-950 text-[13px] font-semibold rounded-lg shadow transition-all shrink-0 cursor-pointer group"
+                      className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-9.5 px-5 bg-white hover:bg-zinc-100 active:scale-98 text-zinc-950 text-[13px] font-semibold rounded-lg shadow transition-all shrink-0 cursor-pointer group"
                     >
                       <span>View All {tools.length > 0 ? tools.length : 28} Tools</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />

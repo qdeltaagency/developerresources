@@ -6,7 +6,14 @@
 }
 
 @layer base {
-  html, body {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  html {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  body {
     margin: 0;
     padding: 0;
     background-color: #f4f5f7;
@@ -15,6 +22,9 @@
     letter-spacing: -0.011em;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    max-width: 100%;
+    width: 100%;
   }
 }
 

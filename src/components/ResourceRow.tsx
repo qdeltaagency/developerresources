@@ -79,49 +79,52 @@ export const ResourceRow: React.FC<ResourceRowProps> = ({
       </div>
 
       {/* Right Actions - ONLY Visit button redirects */}
-      <div className="flex items-center gap-2.5 shrink-0 self-end md:self-auto">
-        {tool.installCmd && (
-          <button
-            onClick={handleCopy}
-            className="hidden lg:inline-flex items-center gap-1.5 h-8 px-2.5 bg-zinc-50 hover:bg-zinc-100 text-zinc-800 text-[11px] font-mono rounded-md border border-zinc-300 transition-colors cursor-pointer"
-            title={`Copy ${tool.installCmd}`}
-          >
-            {copied ? (
-              <>
-                <Check className="w-3 h-3 text-emerald-600" />
-                <span className="text-emerald-700 font-semibold">Copied!</span>
-              </>
-            ) : (
-              <>
-                <Copy className="w-3 h-3 text-zinc-500" />
-                <span className="truncate max-w-[140px] font-medium">{tool.installCmd}</span>
-              </>
-            )}
-          </button>
-        )}
+      <div className="flex items-center justify-between md:justify-end gap-2.5 w-full md:w-auto shrink-0 pt-2.5 border-t border-zinc-200/70 md:border-0 md:pt-0">
+        <div className="flex items-center gap-2">
+          {tool.installCmd && (
+            <button
+              onClick={handleCopy}
+              className="inline-flex items-center gap-1.5 h-8 px-2.5 bg-zinc-50 hover:bg-zinc-100 text-zinc-800 text-[11px] font-mono rounded-md border border-zinc-300 transition-colors cursor-pointer"
+              title={`Copy ${tool.installCmd}`}
+            >
+              {copied ? (
+                <>
+                  <Check className="w-3 h-3 text-emerald-600" />
+                  <span className="text-emerald-700 font-semibold">Copied!</span>
+                </>
+              ) : (
+                <>
+                  <Copy className="w-3 h-3 text-zinc-500" />
+                  <span className="truncate max-w-[100px] sm:max-w-[140px] font-medium">{tool.installCmd}</span>
+                </>
+              )}
+            </button>
+          )}
 
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onToggleBookmark(tool.id);
-          }}
-          className={`btn-bookmark w-8 h-8 rounded-md border shadow-2xs flex items-center justify-center transition-all cursor-pointer ${
-            isBookmarked
-              ? "bg-zinc-950 border-zinc-950 text-white"
-              : "bg-white border-zinc-300 text-zinc-600 hover:text-zinc-950 hover:border-zinc-400"
-          }`}
-          title={isBookmarked ? "Remove bookmark" : "Save bookmark"}
-        >
-          <Bookmark className="w-3.5 h-3.5" fill={isBookmarked ? "currentColor" : "none"} />
-        </button>
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              onToggleBookmark(tool.id);
+            }}
+            className={`btn-bookmark w-8 h-8 rounded-md border shadow-2xs flex items-center justify-center transition-all cursor-pointer ${
+              isBookmarked
+                ? "bg-zinc-950 border-zinc-950 text-white"
+                : "bg-white border-zinc-300 text-zinc-600 hover:text-zinc-950 hover:border-zinc-400"
+            }`}
+            title={isBookmarked ? "Remove bookmark" : "Save bookmark"}
+            aria-label={isBookmarked ? "Remove bookmark" : "Save bookmark"}
+          >
+            <Bookmark className="w-3.5 h-3.5" fill={isBookmarked ? "currentColor" : "none"} />
+          </button>
+        </div>
 
         {/* ONLY Visit button redirects */}
         <a
           href={safeUrl(tool.url)}
           target="_blank"
           rel="noopener noreferrer"
-          className="visit-btn inline-flex items-center gap-1 h-8 px-3 rounded-md bg-zinc-100 hover:bg-zinc-950 hover:text-white border border-zinc-300 hover:border-zinc-950 text-zinc-900 text-[12px] font-semibold transition-all cursor-pointer"
+          className="visit-btn inline-flex items-center gap-1 h-8 px-3 rounded-md bg-zinc-100 hover:bg-zinc-950 hover:text-white border border-zinc-300 hover:border-zinc-950 text-zinc-900 text-[12px] font-semibold transition-all cursor-pointer shrink-0"
         >
           <span>Visit</span>
           <ArrowUpRight className="arrow-icon w-3.5 h-3.5 text-zinc-600 group-hover:text-white" />

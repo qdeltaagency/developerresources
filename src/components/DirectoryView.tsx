@@ -264,13 +264,13 @@ const DirectoryViewInner: React.FC<DirectoryViewProps> = ({
       />
 
       {/* Main Content Area */}
-      <main className="w-full pt-16 flex-1">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-8 md:py-10">
+      <main className="w-full pt-16 flex-1 overflow-x-hidden">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 md:px-8 lg:px-12 py-5 sm:py-8 md:py-10 w-full min-w-0">
           {/* Breadcrumbs / Back navigation */}
-          <div className="mb-6 flex items-center justify-start">
+          <div className="mb-4 sm:mb-6 flex items-center justify-start">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-white hover:bg-zinc-100 border border-zinc-300 text-zinc-900 text-[12.5px] font-semibold shadow-2xs hover:border-zinc-400 transition-all cursor-pointer group"
+              className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-md bg-white hover:bg-zinc-100 border border-zinc-300 text-zinc-900 text-[12px] sm:text-[12.5px] font-semibold shadow-2xs hover:border-zinc-400 transition-all cursor-pointer group"
             >
               <ArrowLeft className="w-3.5 h-3.5 text-zinc-700 group-hover:-translate-x-0.5 transition-transform" />
               <span>Back to All Sections</span>
@@ -278,16 +278,16 @@ const DirectoryViewInner: React.FC<DirectoryViewProps> = ({
           </div>
 
           {/* PAGE HERO - Instant GPU-accelerated entrance animation */}
-          <section className="mb-8">
+          <section className="mb-6 sm:mb-8 w-full min-w-0">
             <div className="text-left max-w-3xl">
-              <div className="animate-hero-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-zinc-300 text-[12px] font-semibold text-zinc-800 mb-3 shadow-2xs">
+              <div className="animate-hero-badge inline-flex items-center gap-2 px-3 sm:px-3.5 py-1 rounded-full bg-white border border-zinc-300 text-[11.5px] sm:text-[12px] font-semibold text-zinc-800 mb-2.5 sm:mb-3 shadow-2xs">
                 <Flame className="w-3.5 h-3.5 text-amber-500" />
                 <span>{badgeText}</span>
               </div>
-              <h1 className="animate-hero-title text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-950 mb-2.5 font-sans">
+              <h1 className="animate-hero-title text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-950 mb-2 sm:mb-2.5 font-sans break-words">
                 {pageTitle}
               </h1>
-              <p className="animate-hero-subtitle text-[15px] md:text-[16.5px] text-zinc-700 leading-relaxed font-normal">
+              <p className="animate-hero-subtitle text-[14px] sm:text-[15px] md:text-[16.5px] text-zinc-700 leading-relaxed font-normal break-words">
                 {pageSubtitle}
               </p>
             </div>
@@ -380,7 +380,7 @@ const DirectoryViewInner: React.FC<DirectoryViewProps> = ({
 
                 {/* Grid vs List View */}
                 {viewMode === "grid" ? (
-                  <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                  <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
                     {filteredAndSortedTools.map((tool, idx) => (
                       <ScrollReveal
                         key={tool.id}

@@ -84,11 +84,11 @@ export const SearchCommandPalette: React.FC<SearchCommandPaletteProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-zinc-950/40 backdrop-blur-xs transition-opacity animate-card">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-12 sm:pt-20 px-3 sm:px-4 bg-zinc-950/40 backdrop-blur-xs transition-opacity animate-card">
       <div className="fixed inset-0" onClick={onClose}></div>
 
       <div
-        className="relative w-full max-w-2xl bg-white rounded-xl border border-zinc-200/90 shadow-2xl overflow-hidden z-10 flex flex-col max-h-[80vh]"
+        className="relative w-full max-w-2xl bg-white rounded-xl border border-zinc-200/90 shadow-2xl overflow-hidden z-10 flex flex-col max-h-[85vh]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Search Input Bar */}
@@ -224,7 +224,7 @@ export const SearchCommandPalette: React.FC<SearchCommandPaletteProps> = ({
             ))}
           </div>
 
-          <div className="flex items-center gap-3 font-mono text-[11px] text-zinc-400">
+          <div className="hidden sm:flex items-center gap-3 font-mono text-[11px] text-zinc-400">
             <span>↑↓ Navigate</span>
             <span>↵ Select</span>
             <span>ESC Close</span>

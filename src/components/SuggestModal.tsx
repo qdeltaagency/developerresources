@@ -153,12 +153,13 @@ export const SuggestModal: React.FC<SuggestModalProps> = ({
       <div className="fixed inset-0" onClick={onClose}></div>
 
       <div
-        className="relative w-full max-w-lg bg-white rounded-xl border border-zinc-200 shadow-2xl p-6 z-10"
+        className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto bg-white rounded-xl border border-zinc-300 shadow-2xl p-5 sm:p-6 z-10"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 p-1.5 rounded-md text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100 transition-colors"
+          className="absolute right-3.5 top-3.5 sm:right-4 sm:top-4 p-1.5 rounded-md text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100 transition-colors cursor-pointer"
+          aria-label="Close"
         >
           <X className="w-4 h-4" />
         </button>
@@ -172,7 +173,7 @@ export const SuggestModal: React.FC<SuggestModalProps> = ({
               Resource Submitted!
             </h3>
             <p className="text-[13px] text-zinc-500 max-w-xs">
-              Thank you for contributing to INDEX. Our curation team will review and verify your submission shortly.
+              Thank you for contributing to Web Tools Finder. Our curation team will review and verify your submission shortly.
             </p>
           </div>
         ) : (
@@ -186,7 +187,7 @@ export const SuggestModal: React.FC<SuggestModalProps> = ({
               </h3>
             </div>
             <p className="text-[13px] text-zinc-500 mb-4">
-              Submit modern libraries, animation tools, or UI primitives for index inclusion.
+              Submit modern libraries, animation tools, or UI primitives for directory inclusion.
             </p>
 
             {errorMessage && (
@@ -195,7 +196,7 @@ export const SuggestModal: React.FC<SuggestModalProps> = ({
                 <button
                   type="button"
                   onClick={() => setErrorMessage(null)}
-                  className="text-rose-500 hover:text-rose-800 text-xs font-bold px-1.5"
+                  className="text-rose-500 hover:text-rose-800 text-xs font-bold px-1.5 cursor-pointer"
                 >
                   ✕
                 </button>
@@ -234,7 +235,7 @@ export const SuggestModal: React.FC<SuggestModalProps> = ({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Motion Primitives"
-                  className="w-full h-9 px-3 bg-zinc-50 border border-zinc-200 rounded-md text-[13px] text-zinc-900 focus:bg-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/15"
+                  className="w-full h-10 sm:h-9 px-3 bg-zinc-50 border border-zinc-200 rounded-md text-[14px] sm:text-[13px] text-zinc-900 focus:bg-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/15"
                 />
               </div>
 
@@ -248,7 +249,7 @@ export const SuggestModal: React.FC<SuggestModalProps> = ({
                   value={url}
                   onChange={(e) => setUrl(e.target.value)}
                   placeholder="https://..."
-                  className="w-full h-9 px-3 bg-zinc-50 border border-zinc-200 rounded-md text-[13px] text-zinc-900 focus:bg-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/15"
+                  className="w-full h-10 sm:h-9 px-3 bg-zinc-50 border border-zinc-200 rounded-md text-[14px] sm:text-[13px] text-zinc-900 focus:bg-white focus:outline-none focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500/15"
                 />
               </div>
 
@@ -260,7 +261,7 @@ export const SuggestModal: React.FC<SuggestModalProps> = ({
                   <select
                     value={category}
                     onChange={(e) => setCategory(e.target.value)}
-                    className="w-full h-9 px-3 bg-zinc-50 border border-zinc-200 rounded-md text-[13px] text-zinc-900 focus:bg-white focus:outline-none focus:border-indigo-500"
+                    className="w-full h-10 sm:h-9 px-3 bg-zinc-50 border border-zinc-200 rounded-md text-[14px] sm:text-[13px] text-zinc-900 focus:bg-white focus:outline-none focus:border-indigo-500"
                   >
                     {CATEGORIES.filter((c) => c.id !== "all" && c.id !== "bookmarks").map(
                       (cat) => (
@@ -281,7 +282,7 @@ export const SuggestModal: React.FC<SuggestModalProps> = ({
                     value={githubUrl}
                     onChange={(e) => setGithubUrl(e.target.value)}
                     placeholder="https://github.com/..."
-                    className="w-full h-9 px-3 bg-zinc-50 border border-zinc-200 rounded-md text-[13px] text-zinc-900 focus:bg-white focus:outline-none focus:border-indigo-500"
+                    className="w-full h-10 sm:h-9 px-3 bg-zinc-50 border border-zinc-200 rounded-md text-[14px] sm:text-[13px] text-zinc-900 focus:bg-white focus:outline-none focus:border-indigo-500"
                   />
                 </div>
               </div>
@@ -295,7 +296,7 @@ export const SuggestModal: React.FC<SuggestModalProps> = ({
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="e.g. Open-source animated components built with Framer Motion"
-                  className="w-full h-9 px-3 bg-zinc-50 border border-zinc-200 rounded-md text-[13px] text-zinc-900 focus:bg-white focus:outline-none focus:border-indigo-500"
+                  className="w-full h-10 sm:h-9 px-3 bg-zinc-50 border border-zinc-200 rounded-md text-[14px] sm:text-[13px] text-zinc-900 focus:bg-white focus:outline-none focus:border-indigo-500"
                 />
               </div>
 
