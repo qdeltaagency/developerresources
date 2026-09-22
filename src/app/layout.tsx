@@ -145,6 +145,9 @@ const jsonLd = {
   ],
 };
 
+import GoogleAnalytics from "@/components/GoogleAnalytics";
+import { CookieConsent } from "@/components/CookieConsent";
+
 export default function RootLayout({
   children,
 }: {
@@ -159,9 +162,11 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
+        <GoogleAnalytics />
       </head>
       <body className="min-h-screen flex flex-col bg-[#f4f5f7] font-sans text-[#09090b] antialiased selection:bg-zinc-900 selection:text-white">
         {children}
+        <CookieConsent />
       </body>
     </html>
   );

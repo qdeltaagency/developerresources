@@ -10,6 +10,17 @@ export const Footer: React.FC = () => {
           © {new Date().getFullYear()} WTF (Web Tools Finder). Built with precision for digital craftspeople.
         </div>
         <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 sm:gap-6 font-medium">
+          <button
+            type="button"
+            onClick={() => {
+              if (typeof window !== "undefined") {
+                window.dispatchEvent(new CustomEvent("open-cookie-settings"));
+              }
+            }}
+            className="text-zinc-600 hover:text-zinc-950 transition-colors cursor-pointer"
+          >
+            Cookie Preferences
+          </button>
           <a
             href="#"
             className="text-zinc-600 hover:text-zinc-950 transition-colors"
