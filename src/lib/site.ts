@@ -23,5 +23,5 @@ export function getSiteUrl(): string {
     return `https://${process.env.VERCEL_URL}`;
   }
 
-  return "https://developerresources-qd-elta.vercel.app";
+  return "https://www.webtoolsfinder.com";
 }
