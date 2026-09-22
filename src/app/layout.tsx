@@ -28,12 +28,13 @@ const siteUrl = getSiteUrl();
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "WTF — Web Tool Finder | Curated Developer Tools & UI Libraries",
-    template: "%s | WTF — Web Tool Finder",
+    default: "WTF — Web Tools Finder | Curated Developer Tools & UI Libraries",
+    template: "%s | WTF — Web Tools Finder",
   },
   description:
-    "WTF (Web Tool Finder) is the curated directory of handpicked UI components, interaction engines, serverless databases, boilerplate starters, and AI tools for modern developers.",
+    "WTF (Web Tools Finder) is the curated directory of handpicked UI components, interaction engines, serverless databases, boilerplate starters, and AI tools for modern developers.",
   keywords: [
+    "web tools finder",
     "web tool finder",
     "WTF developer tools",
     "web tools directory",
@@ -53,8 +54,8 @@ export const metadata: Metadata = {
     "best web dev tools 2026",
   ],
   authors: [{ name: "WTF Curation Team", url: siteUrl }],
-  creator: "Web Tool Finder",
-  publisher: "WTF — Web Tool Finder",
+  creator: "Web Tools Finder",
+  publisher: "WTF — Web Tools Finder",
   formatDetection: {
     email: false,
     address: false,
@@ -67,22 +68,22 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: siteUrl,
-    siteName: "WTF — Web Tool Finder",
-    title: "WTF — Web Tool Finder | Curated Developer Tools & UI Libraries",
+    siteName: "WTF — Web Tools Finder",
+    title: "WTF — Web Tools Finder | Curated Developer Tools & UI Libraries",
     description:
-      "Discover handpicked UI components, interaction engines, serverless databases, boilerplate starters, and AI tools for modern web developers on WTF (Web Tool Finder).",
+      "Discover handpicked UI components, interaction engines, serverless databases, boilerplate starters, and AI tools for modern web developers on WTF (Web Tools Finder).",
     images: [
       {
         url: "/previews/shadcn-ui.png",
         width: 1200,
         height: 630,
-        alt: "WTF — Web Tool Finder",
+        alt: "WTF — Web Tools Finder",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "WTF — Web Tool Finder",
+    title: "WTF — Web Tools Finder",
     description:
       "The curated directory of handpicked UI components, interaction engines, serverless databases, and AI tooling.",
     images: ["/previews/shadcn-ui.png"],
@@ -108,13 +109,13 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": `${siteUrl}/#website`,
       url: siteUrl,
-      name: "WTF — Web Tool Finder",
-      alternateName: ["Web Tool Finder", "WTF Directory", "WTF Tools"],
+      name: "WTF — Web Tools Finder",
+      alternateName: ["Web Tools Finder", "Web Tool Finder", "WTF Directory", "WTF Tools"],
       description:
         "Curated collection of top UI primitives, developer utilities, serverless databases, and AI tooling for modern web creators.",
       publisher: {
         "@type": "Organization",
-        name: "WTF — Web Tool Finder",
+        name: "WTF — Web Tools Finder",
         url: siteUrl,
       },
       potentialAction: {
@@ -130,7 +131,7 @@ const jsonLd = {
       "@type": "CollectionPage",
       "@id": `${siteUrl}/#webpage`,
       url: siteUrl,
-      name: "WTF — The Curated Web Tool Finder",
+      name: "WTF — The Curated Web Tools Finder",
       about: {
         "@type": "Thing",
         name: "Web Development Tools, UI Primitives, and Developer Libraries",

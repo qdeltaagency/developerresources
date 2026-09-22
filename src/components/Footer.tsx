@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
     <footer className="w-full bg-white border-t border-zinc-200/80 mt-auto">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 py-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[13px] text-zinc-500 font-sans">
         <div>
-          © {new Date().getFullYear()} WTF (Web Tool Finder). Built with precision for digital craftspeople.
+          © {new Date().getFullYear()} WTF (Web Tools Finder). Built with precision for digital craftspeople.
         </div>
         <div className="flex items-center gap-6">
           <a

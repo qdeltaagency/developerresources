@@ -135,7 +135,7 @@ export const Header: React.FC<HeaderProps> = ({
             <WtfAnimatedBadge />
 
             <span className="font-bold text-[15px] sm:text-[16px] tracking-tight text-zinc-950 font-sans">
-              Web Tool Finder
+              Web Tools Finder
             </span>
           </Link>
           <span className="font-mono text-[11px] font-medium bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded-[4px] border border-zinc-200/70 hidden sm:inline-block">

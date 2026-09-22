@@ -7,8 +7,8 @@ interface WtfLogoProps extends React.SVGProps<SVGSVGElement> {
 }
 
 /**
- * Exact vector representation of the official WTF (Web Tool Finder) brand logo,
- * featuring the pixelated 'W', bold 'TF', retro pixel cursor, and spaced 'WEB TOOL FINDER' subtitle.
+ * Exact vector representation of the official WTF (Web Tools Finder) brand logo,
+ * featuring the pixelated 'W', bold 'TF', retro pixel cursor, and spaced 'WEB TOOLS FINDER' subtitle.
  */
 export const WtfLogo: React.FC<WtfLogoProps> = ({ className = "h-8 w-auto", ...props }) => {
   return (

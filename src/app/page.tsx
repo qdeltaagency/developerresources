@@ -380,7 +380,7 @@ export default function HomePage() {
                 <span>The Curated Developer Directory</span>
               </div>
               <h1 className="animate-hero-title text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 mb-3 font-sans">
-                Web Tool Finder <span className="text-zinc-400 font-normal text-2xl md:text-4xl">(WTF)</span>
+                Web Tools Finder <span className="text-zinc-400 font-normal text-2xl md:text-4xl">(WTF)</span>
               </h1>
               <p className="animate-hero-subtitle text-[15px] md:text-base text-zinc-600 max-w-2xl mx-auto leading-relaxed">
                 Handpicked UI primitives, interaction engines, serverless databases, and AI tooling organized by domain.
