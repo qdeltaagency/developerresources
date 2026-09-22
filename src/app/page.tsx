@@ -375,14 +375,14 @@ export default function HomePage() {
           {/* HERO SECTION - Instant GPU-accelerated entrance animation */}
           <section className="mb-7">
             <div className="text-center max-w-3xl mx-auto">
-              <div className="animate-hero-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[12px] font-medium text-zinc-700 mb-4 shadow-2xs">
-                <Sparkles className="w-3.5 h-3.5 text-zinc-800" />
+              <div className="animate-hero-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-zinc-300 text-[12px] font-semibold text-zinc-800 mb-4 shadow-2xs">
+                <Sparkles className="w-3.5 h-3.5 text-zinc-900" />
                 <span>The Curated Developer Directory</span>
               </div>
-              <h1 className="animate-hero-title text-3xl md:text-5xl font-bold tracking-tight text-zinc-950 mb-3 font-sans">
+              <h1 className="animate-hero-title text-3xl md:text-5xl font-extrabold tracking-tight text-zinc-950 mb-3 font-sans">
                 Web Tools Finder <span className="text-zinc-400 font-normal text-2xl md:text-4xl">(WTF)</span>
               </h1>
-              <p className="animate-hero-subtitle text-[15px] md:text-base text-zinc-600 max-w-2xl mx-auto leading-relaxed">
+              <p className="animate-hero-subtitle text-base md:text-[17px] text-zinc-700 max-w-2xl mx-auto leading-relaxed">
                 Handpicked UI primitives, interaction engines, serverless databases, and AI tooling organized by domain.
               </p>
             </div>
@@ -390,7 +390,7 @@ export default function HomePage() {
 
           {/* SECTION NAVIGATION FOR CURRENT PAGE (Scrolls naturally with content) */}
           {isSectionedMode ? (
-            <div className="animate-hero-nav py-2.5 mb-8 border-b border-zinc-200/80 -mx-4 px-4 sm:-mx-6 sm:px-6 transition-all">
+            <div className="animate-hero-nav py-2.5 mb-8 border-b border-zinc-300 -mx-4 px-4 sm:-mx-6 sm:px-6 transition-all">
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 max-w-6xl mx-auto">
                 {isLoading && sections.length === 0 ? (
                   /* Unified Skeleton for the entire navigation bar while fetching */
@@ -410,10 +410,10 @@ export default function HomePage() {
                     <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-1">
                       <button
                         onClick={() => scrollToSection("all")}
-                        className={`px-3.5 py-1.5 rounded-md text-[13px] font-medium transition-all active:scale-95 cursor-pointer ${
+                        className={`px-3.5 py-1.5 rounded-md text-[13px] font-semibold transition-all active:scale-95 cursor-pointer ${
                           activeSection === "all"
-                            ? "bg-zinc-900 text-white shadow-xs"
-                            : "bg-white text-zinc-700 border border-zinc-200/80 hover:text-zinc-950 hover:border-zinc-300 hover:bg-zinc-50"
+                            ? "bg-zinc-950 text-white shadow-xs"
+                            : "bg-white text-zinc-800 border border-zinc-300 hover:text-zinc-950 hover:border-zinc-400 hover:bg-zinc-50 shadow-2xs"
                         }`}
                       >
                         All Sections
@@ -426,13 +426,13 @@ export default function HomePage() {
                           <button
                             key={sec.slug}
                             onClick={() => scrollToSection(secId)}
-                            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-[13px] font-medium transition-all active:scale-95 cursor-pointer ${
+                            className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md text-[13px] font-semibold transition-all active:scale-95 cursor-pointer ${
                               isActive
-                                ? "bg-zinc-900 text-white shadow-xs"
-                                : "bg-white text-zinc-700 border border-zinc-200/80 hover:text-zinc-950 hover:border-zinc-300 hover:bg-zinc-50"
+                                ? "bg-zinc-950 text-white shadow-xs"
+                                : "bg-white text-zinc-800 border border-zinc-300 hover:text-zinc-950 hover:border-zinc-400 hover:bg-zinc-50 shadow-2xs"
                             }`}
                           >
-                            {renderSectionIcon(sec.slug, sec.icon, `w-4 h-4 ${isActive ? "text-white" : "text-zinc-900"}`)}
+                            {renderSectionIcon(sec.slug, sec.icon, `w-4 h-4 ${isActive ? "text-white" : "text-zinc-950"}`)}
                             <span>{sec.title}</span>
                           </button>
                         );
@@ -442,10 +442,10 @@ export default function HomePage() {
                     {/* Direct Link to View All Catalogue (Sorted Alphabetically) */}
                     <Link
                       href="/directory"
-                      className="inline-flex items-center gap-1.5 text-[13px] font-medium text-zinc-600 hover:text-zinc-950 transition-colors shrink-0 cursor-pointer self-end sm:self-auto group"
+                      className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-zinc-700 hover:text-zinc-950 transition-colors shrink-0 cursor-pointer self-end sm:self-auto group"
                     >
                       <span>Explore Full Directory {tools.length > 0 ? `(${tools.length})` : ""}</span>
-                      <ArrowRight className="w-3.5 h-3.5 text-zinc-400 group-hover:text-zinc-950 transition-transform group-hover:translate-x-0.5" />
+                      <ArrowRight className="w-3.5 h-3.5 text-zinc-500 group-hover:text-zinc-950 transition-transform group-hover:translate-x-0.5" />
                     </Link>
                   </>
                 )}
@@ -479,14 +479,14 @@ export default function HomePage() {
 
                       <section id={`${section.slug}-section`} className="flex flex-col gap-4 scroll-mt-36">
                         <ScrollReveal direction="up" delay={0.08 + (secIdx % 4) * 0.02}>
-                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-200/90">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-zinc-300">
                             <div className="flex items-center gap-2">
-                              {renderSectionIcon(section.slug, section.icon, "w-4.5 h-4.5 text-zinc-900 shrink-0")}
+                              {renderSectionIcon(section.slug, section.icon, "w-4.5 h-4.5 text-zinc-950 shrink-0")}
                               <div>
-                                <h2 className="text-[16px] sm:text-[17.5px] font-semibold text-zinc-950 tracking-tight">
+                                <h2 className="text-[17px] sm:text-[19px] font-bold text-zinc-950 tracking-tight">
                                   {section.title}
                                 </h2>
-                                <p className="text-[12px] text-zinc-500">
+                                <p className="text-[14px] sm:text-[14.5px] text-zinc-700 leading-normal mt-0.5">
                                   {section.description}
                                 </p>
                               </div>
@@ -494,10 +494,10 @@ export default function HomePage() {
 
                             <Link
                               href={linkHref}
-                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white hover:bg-zinc-50 text-zinc-800 text-[12.5px] font-medium border border-zinc-200/90 hover:border-zinc-300 shadow-2xs transition-all self-start sm:self-auto group cursor-pointer"
+                              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md bg-white hover:bg-zinc-100 text-zinc-900 text-[12.5px] font-semibold border border-zinc-300 hover:border-zinc-400 shadow-2xs transition-all self-start sm:self-auto group cursor-pointer"
                             >
                               <span>View All {secTools.length > 0 ? `(${secTools.length})` : ""}</span>
-                              <ArrowRight className="w-3.5 h-3.5 text-zinc-500 transition-transform group-hover:translate-x-0.5" />
+                              <ArrowRight className="w-3.5 h-3.5 text-zinc-600 transition-transform group-hover:translate-x-0.5" />
                             </Link>
                           </div>
                         </ScrollReveal>
@@ -576,9 +576,9 @@ export default function HomePage() {
                     updateUrl("", "all");
                     setForceFullCatalog(false);
                   }}
-                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white hover:bg-zinc-50 border border-zinc-200/90 text-zinc-800 text-[12.5px] font-medium shadow-2xs hover:border-zinc-300 transition-all cursor-pointer group"
+                  className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-white hover:bg-zinc-100 border border-zinc-300 text-zinc-900 text-[12.5px] font-semibold shadow-2xs hover:border-zinc-400 transition-all cursor-pointer group"
                 >
-                  <ArrowLeft className="w-3.5 h-3.5 text-zinc-500 group-hover:-translate-x-0.5 transition-transform" />
+                  <ArrowLeft className="w-3.5 h-3.5 text-zinc-700 group-hover:-translate-x-0.5 transition-transform" />
                   <span>Back to Grouped Sections</span>
                 </button>
               </div>

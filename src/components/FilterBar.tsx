@@ -62,7 +62,7 @@ export const FilterBar: React.FC<FilterBarProps> = ({
   return (
     <div className="flex flex-col gap-4">
       {/* Horizontal Pill Filter Bar & View Controls */}
-      <section className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-zinc-200/60">
+      <section className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-zinc-300">
         {/* Category Pills */}
         <div className="flex items-center gap-1.5 overflow-x-auto scrollbar-none py-1">
           {categories.map((cat) => {
@@ -71,10 +71,10 @@ export const FilterBar: React.FC<FilterBarProps> = ({
               <button
                 key={cat.id}
                 onClick={() => onSelectCategory(cat.id)}
-                className={`filter-pill whitespace-nowrap px-3.5 py-1.5 rounded-md text-[13px] font-medium transition-all active:scale-95 cursor-pointer ${
+                className={`filter-pill whitespace-nowrap px-3.5 py-1.5 rounded-md text-[13px] font-semibold transition-all active:scale-95 cursor-pointer ${
                   isActive
-                    ? "bg-zinc-900 text-white shadow-xs filter-active"
-                    : "bg-white text-zinc-600 border border-zinc-200/80 hover:text-zinc-900 hover:border-zinc-300 hover:bg-zinc-50"
+                    ? "bg-zinc-950 text-white shadow-xs filter-active"
+                    : "bg-white text-zinc-800 border border-zinc-300 hover:text-zinc-950 hover:border-zinc-400 hover:bg-zinc-50 shadow-2xs"
                 }`}
               >
                 {cat.label}
@@ -89,17 +89,17 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           <div className="relative" ref={sortRef}>
             <button
               onClick={() => setSortOpen(!sortOpen)}
-              className="inline-flex items-center gap-1.5 h-8 px-3 bg-white border border-zinc-200/80 rounded-md text-[13px] font-medium text-zinc-800 hover:bg-zinc-50 hover:border-zinc-300 shadow-2xs transition-all active:scale-98 cursor-pointer"
+              className="inline-flex items-center gap-1.5 h-8 px-3 bg-white border border-zinc-300 rounded-md text-[13px] font-medium text-zinc-900 hover:bg-zinc-50 hover:border-zinc-400 shadow-2xs transition-all active:scale-98 cursor-pointer"
             >
-              <SlidersHorizontal className="w-3.5 h-3.5 text-zinc-400" />
+              <SlidersHorizontal className="w-3.5 h-3.5 text-zinc-600" />
               <span>
-                Sort: <strong className="font-semibold text-zinc-900">{sortLabels[sortBy]}</strong>
+                Sort: <strong className="font-bold text-zinc-950">{sortLabels[sortBy]}</strong>
               </span>
-              <ChevronDown className="w-3.5 h-3.5 text-zinc-400" />
+              <ChevronDown className="w-3.5 h-3.5 text-zinc-600" />
             </button>
 
             {sortOpen && (
-              <div className="absolute right-0 top-10 w-44 bg-white rounded-lg border border-zinc-200 shadow-xl overflow-hidden z-30 p-1 animate-card">
+              <div className="absolute right-0 top-10 w-44 bg-white rounded-lg border border-zinc-300 shadow-xl overflow-hidden z-30 p-1 animate-card">
                 {(Object.keys(sortLabels) as SortOption[]).map((option) => (
                   <button
                     key={option}
@@ -109,12 +109,12 @@ export const FilterBar: React.FC<FilterBarProps> = ({
                     }}
                     className={`w-full flex items-center justify-between px-3 py-1.5 rounded-md text-[12.5px] font-medium text-left transition-colors ${
                       sortBy === option
-                        ? "bg-zinc-100 text-zinc-900 font-semibold"
-                        : "text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900"
+                        ? "bg-zinc-100 text-zinc-950 font-bold"
+                        : "text-zinc-700 hover:bg-zinc-50 hover:text-zinc-950"
                     }`}
                   >
                     <span>{sortLabels[option]}</span>
-                    {sortBy === option && <Check className="w-3.5 h-3.5 text-zinc-900" />}
+                    {sortBy === option && <Check className="w-3.5 h-3.5 text-zinc-950" />}
                   </button>
                 ))}
               </div>
@@ -122,13 +122,13 @@ export const FilterBar: React.FC<FilterBarProps> = ({
           </div>
 
           {/* Grid / List View Toggle */}
-          <div className="inline-flex bg-zinc-100 p-0.5 rounded-md border border-zinc-200/80">
+          <div className="inline-flex bg-zinc-200/80 p-0.5 rounded-md border border-zinc-300 shadow-2xs">
             <button
               onClick={() => onViewModeChange("grid")}
               className={`p-1.5 rounded transition-all cursor-pointer ${
                 viewMode === "grid"
-                  ? "bg-white text-zinc-900 shadow-2xs"
-                  : "text-zinc-500 hover:text-zinc-900"
+                  ? "bg-white text-zinc-950 shadow-2xs"
+                  : "text-zinc-600 hover:text-zinc-950"
               }`}
               title="Grid View"
             >
@@ -138,8 +138,8 @@ export const FilterBar: React.FC<FilterBarProps> = ({
               onClick={() => onViewModeChange("list")}
               className={`p-1.5 rounded transition-all cursor-pointer ${
                 viewMode === "list"
-                  ? "bg-white text-zinc-900 shadow-2xs"
-                  : "text-zinc-500 hover:text-zinc-900"
+                  ? "bg-white text-zinc-950 shadow-2xs"
+                  : "text-zinc-600 hover:text-zinc-950"
               }`}
               title="List View"
             >

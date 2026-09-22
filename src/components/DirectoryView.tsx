@@ -242,7 +242,7 @@ const DirectoryViewInner: React.FC<DirectoryViewProps> = ({
   }, [tools, initialDomain, activeCategory, searchQuery, sortBy, bookmarks]);
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#fcfcfd]">
+    <div className="min-h-screen flex flex-col bg-[#f4f5f7]">
       {/* Scroll Progress Bar */}
       <ScrollProgressBar />
 
@@ -270,9 +270,9 @@ const DirectoryViewInner: React.FC<DirectoryViewProps> = ({
           <div className="mb-6 flex items-center justify-start">
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md bg-white hover:bg-zinc-50 border border-zinc-200/90 text-zinc-800 text-[12.5px] font-medium shadow-2xs hover:border-zinc-300 transition-all cursor-pointer group"
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-md bg-white hover:bg-zinc-100 border border-zinc-300 text-zinc-900 text-[12.5px] font-semibold shadow-2xs hover:border-zinc-400 transition-all cursor-pointer group"
             >
-              <ArrowLeft className="w-3.5 h-3.5 text-zinc-500 group-hover:-translate-x-0.5 transition-transform" />
+              <ArrowLeft className="w-3.5 h-3.5 text-zinc-700 group-hover:-translate-x-0.5 transition-transform" />
               <span>Back to All Sections</span>
             </Link>
           </div>
@@ -280,14 +280,14 @@ const DirectoryViewInner: React.FC<DirectoryViewProps> = ({
           {/* PAGE HERO - Instant GPU-accelerated entrance animation */}
           <section className="mb-8">
             <div className="text-left max-w-3xl">
-              <div className="animate-hero-badge inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-100 border border-zinc-200 text-[12px] font-medium text-zinc-700 mb-3">
+              <div className="animate-hero-badge inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white border border-zinc-300 text-[12px] font-semibold text-zinc-800 mb-3 shadow-2xs">
                 <Flame className="w-3.5 h-3.5 text-amber-500" />
                 <span>{badgeText}</span>
               </div>
-              <h1 className="animate-hero-title text-3xl md:text-4xl font-bold tracking-tight text-zinc-950 mb-2.5 font-sans">
+              <h1 className="animate-hero-title text-3xl md:text-4xl font-extrabold tracking-tight text-zinc-950 mb-2.5 font-sans">
                 {pageTitle}
               </h1>
-              <p className="animate-hero-subtitle text-[14.5px] md:text-[15.5px] text-zinc-600 leading-relaxed">
+              <p className="animate-hero-subtitle text-[15px] md:text-[16.5px] text-zinc-700 leading-relaxed font-normal">
                 {pageSubtitle}
               </p>
             </div>

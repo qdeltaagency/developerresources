@@ -22,11 +22,11 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
 
   return (
     <div
-      className="craft-card animate-card group bg-white rounded-lg border border-zinc-200/80 flex flex-col overflow-hidden text-left shadow-2xs hover:shadow-md transition-all duration-300"
+      className="craft-card animate-card group bg-white rounded-xl border border-zinc-300 shadow-[0_1px_3px_rgba(0,0,0,0.06),0_1px_2px_rgba(0,0,0,0.04)] hover:border-zinc-400 hover:shadow-[0_10px_25px_-5px_rgba(0,0,0,0.08)] flex flex-col overflow-hidden text-left transition-all duration-200"
       style={{ animationDelay: `${Math.min(delayIndex * 0.04, 0.4)}s` }}
     >
       {/* Top Preview Canvas with Real Image (no redirect on click) - 16:10 aspect ratio matches full screenshot */}
-      <div className="relative w-full aspect-[16/10] bg-zinc-950 overflow-hidden border-b border-zinc-200/80 flex flex-col justify-between p-2.5 select-none">
+      <div className="relative w-full aspect-[16/10] bg-zinc-950 overflow-hidden border-b border-zinc-200 flex flex-col justify-between p-2.5 select-none">
         {/* Real Screenshot / Photo */}
         {!imgError && tool.image ? (
           <img
@@ -90,7 +90,7 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
         {/* Row 1: Product Name & Visit Button */}
         <div className="flex items-center justify-between gap-2 min-w-0">
           <h3 
-            className="text-[14.5px] font-semibold text-zinc-950 tracking-tight truncate"
+            className="text-[15px] sm:text-[15.5px] font-bold text-zinc-950 tracking-tight truncate"
             title={tool.name}
           >
             {tool.name}
@@ -101,22 +101,22 @@ export const ResourceCard: React.FC<ResourceCardProps> = ({
             href={safeUrl(tool.url)}
             target="_blank"
             rel="noopener noreferrer"
-            className="visit-btn inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-zinc-50 hover:bg-zinc-900 hover:text-white group-hover:bg-zinc-100 hover:border-zinc-900 border border-zinc-200 text-zinc-800 text-[11.5px] font-medium transition-all shrink-0 cursor-pointer"
+            className="visit-btn inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-zinc-100 hover:bg-zinc-950 hover:text-white group-hover:bg-zinc-100 hover:border-zinc-950 border border-zinc-300 text-zinc-900 text-[12px] font-semibold transition-all shrink-0 cursor-pointer"
           >
             <span>Visit</span>
-            <ArrowUpRight className="arrow-icon w-3.5 h-3.5 text-zinc-500" />
+            <ArrowUpRight className="arrow-icon w-3.5 h-3.5 text-zinc-600 group-hover:text-white" />
           </a>
         </div>
 
         {/* Row 2: Subcategory Badge */}
         <div className="flex items-center gap-1.5 min-w-0">
-          <span className="text-[10px] font-medium px-2 py-0.5 rounded bg-zinc-100 text-zinc-700 border border-zinc-200/70 font-mono truncate">
+          <span className="text-[11px] font-semibold px-2 py-0.5 rounded bg-zinc-100 text-zinc-800 border border-zinc-300 font-mono truncate">
             {tool.categoryLabel}
           </span>
         </div>
 
         {/* Row 3: Single-Row Concise Description */}
-        <p className="text-[12px] text-zinc-500 truncate leading-normal" title={tool.description}>
+        <p className="text-[13px] sm:text-[13.5px] text-zinc-700 font-normal truncate leading-normal" title={tool.description}>
           {tool.description}
         </p>
       </div>

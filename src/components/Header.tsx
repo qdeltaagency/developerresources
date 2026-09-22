@@ -119,7 +119,7 @@ export const Header: React.FC<HeaderProps> = ({
   };
 
   return (
-    <header className="fixed top-0 w-full z-40 bg-[#fcfcfd]/90 backdrop-blur-md border-b border-zinc-200/80 transition-colors">
+    <header className="fixed top-0 w-full z-40 bg-[#f4f5f7]/95 backdrop-blur-md border-b border-zinc-300 transition-colors">
       <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 h-16 flex items-center justify-between gap-6">
         {/* Brand & Version */}
         <div className="flex items-center gap-3 shrink-0">
@@ -138,7 +138,7 @@ export const Header: React.FC<HeaderProps> = ({
               Web Tools Finder
             </span>
           </Link>
-          <span className="font-mono text-[11px] font-medium bg-zinc-100 text-zinc-600 px-1.5 py-0.5 rounded-[4px] border border-zinc-200/70 hidden sm:inline-block">
+          <span className="font-mono text-[11px] font-semibold bg-white text-zinc-800 px-1.5 py-0.5 rounded-[4px] border border-zinc-300 shadow-2xs hidden sm:inline-block">
             v1.0
           </span>
         </div>
@@ -146,7 +146,7 @@ export const Header: React.FC<HeaderProps> = ({
         {/* Search Bar with Black Focus and Suggestions Dropdown */}
         <div className="flex-1 max-w-md hidden md:block" ref={containerRef}>
           <div className="relative flex items-center group">
-            <Search className="absolute left-3.5 text-zinc-400 group-focus-within:text-zinc-900 w-4 h-4 pointer-events-none transition-colors" />
+            <Search className="absolute left-3.5 text-zinc-500 group-focus-within:text-zinc-950 w-4 h-4 pointer-events-none transition-colors" />
             <input
               ref={inputRef}
               type="text"
@@ -161,13 +161,13 @@ export const Header: React.FC<HeaderProps> = ({
               }}
               onKeyDown={handleKeyDown}
               placeholder="Search 160+ curated web tools..."
-              className="w-full h-9 pl-10 pr-16 bg-zinc-50/80 hover:bg-zinc-100/70 focus:bg-white border border-zinc-200/90 rounded-md text-[13px] text-zinc-900 placeholder:text-zinc-400 focus:outline-none focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10 transition-all duration-200 font-sans"
+              className="w-full h-9 pl-10 pr-16 bg-white hover:bg-zinc-50/80 focus:bg-white border border-zinc-300 rounded-md text-[13px] text-zinc-950 placeholder:text-zinc-500 focus:outline-none focus:border-zinc-950 focus:ring-2 focus:ring-zinc-950/10 shadow-2xs transition-all duration-200 font-sans"
             />
 
             {inputValue ? (
               <button
                 onClick={handleClear}
-                className="absolute right-3 p-0.5 rounded-full text-zinc-400 hover:text-zinc-700 hover:bg-zinc-200 transition-colors cursor-pointer"
+                className="absolute right-3 p-0.5 rounded-full text-zinc-500 hover:text-zinc-900 hover:bg-zinc-200 transition-colors cursor-pointer"
                 title="Clear search"
               >
                 <X className="w-3.5 h-3.5" />
@@ -178,7 +178,7 @@ export const Header: React.FC<HeaderProps> = ({
                   inputRef.current?.focus();
                   setShowSuggestions(true);
                 }}
-                className="absolute right-2.5 font-mono text-[11px] font-medium text-zinc-500 bg-white border border-zinc-200/90 px-1.5 py-0.5 rounded shadow-2xs cursor-pointer hover:bg-zinc-100 hover:text-zinc-900 transition-colors select-none"
+                className="absolute right-2.5 font-mono text-[11px] font-semibold text-zinc-700 bg-zinc-100 border border-zinc-300 px-1.5 py-0.5 rounded shadow-2xs cursor-pointer hover:bg-zinc-200 hover:text-zinc-950 transition-colors select-none"
                 title="Press Ctrl+K or / to search"
               >
                 Ctrl+K
@@ -237,13 +237,13 @@ export const Header: React.FC<HeaderProps> = ({
             <button
               onClick={() => onSelectCategory("bookmarks")}
               className={`transition-colors duration-150 flex items-center gap-1.5 cursor-pointer ${
-                activeCategory === "bookmarks" ? "text-zinc-900 font-semibold" : "text-zinc-500 hover:text-zinc-900"
+                activeCategory === "bookmarks" ? "text-zinc-950 font-bold" : "text-zinc-700 hover:text-zinc-950 font-medium"
               }`}
             >
               <Bookmark className="w-3.5 h-3.5" />
               <span>Saved</span>
               {bookmarkCount > 0 && (
-                <span className="font-mono text-[10px] bg-zinc-900 text-white px-1.5 py-0.2 rounded-full">
+                <span className="font-mono text-[10px] font-bold bg-zinc-950 text-white px-1.5 py-0.2 rounded-full">
                   {bookmarkCount}
                 </span>
               )}
@@ -252,7 +252,7 @@ export const Header: React.FC<HeaderProps> = ({
 
           <button
             onClick={onOpenSuggest}
-            className="group inline-flex items-center gap-1.5 h-8 px-3.5 bg-zinc-900 hover:bg-zinc-800 active:scale-98 text-white text-[12px] font-medium rounded-md shadow-2xs transition-all duration-150 cursor-pointer"
+            className="group inline-flex items-center gap-1.5 h-8 px-3.5 bg-zinc-950 hover:bg-zinc-800 active:scale-98 text-white text-[12.5px] font-semibold rounded-md shadow-xs transition-all duration-150 cursor-pointer"
           >
             <span>Suggest Resource</span>
             <ArrowUpRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
