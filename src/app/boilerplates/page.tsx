@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DirectoryView } from "@/components/DirectoryView";
 
 export const metadata: Metadata = {
-  title: "SaaS Starters & Full-Stack Boilerplates | INDEX",
+  title: "SaaS Starters & Full-Stack Boilerplates",
   description:
     "Discover production-ready Next.js 15 starter templates, AI SaaS wrapper boilerplates, and cross-platform mobile starters including Create T3 App and Wasp AI.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "/boilerplates",
   },
   openGraph: {
-    title: "SaaS Starters & Full-Stack Boilerplates | INDEX",
+    title: "SaaS Starters & Full-Stack Boilerplates | WTF — Web Tools Finder",
     description:
       "Handpicked production-ready Next.js starters and AI SaaS boilerplates.",
     type: "website",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SaaS Starters & Full-Stack Boilerplates | INDEX",
+    title: "SaaS Starters & Full-Stack Boilerplates | WTF — Web Tools Finder",
     description:
       "Handpicked production-ready Next.js starters and AI SaaS boilerplates.",
   },

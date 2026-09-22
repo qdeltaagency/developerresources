@@ -19,6 +19,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1.0,
+  themeColor: "#09090b",
 };
 
 import { getSiteUrl } from "@/lib/site";
@@ -63,6 +64,10 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: "/",
+  },
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/wtf-logo.png",
   },
   openGraph: {
     type: "website",

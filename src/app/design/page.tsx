@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DirectoryView } from "@/components/DirectoryView";
 
 export const metadata: Metadata = {
-  title: "Best Web Design & UI Tools (2026) | INDEX",
+  title: "Best Web Design & UI Tools (2026)",
   description:
     "Curated collection of top UI component primitives, 3D canvas engines, and animation libraries including shadcn/ui, Magic UI, and Spline 3D.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "/design",
   },
   openGraph: {
-    title: "Best Web Design & UI Tools (2026) | INDEX",
+    title: "Best Web Design & UI Tools (2026) | WTF — Web Tools Finder",
     description:
       "Curated UI primitives, animation libraries, and 3D design tools for modern web applications.",
     type: "website",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Best Web Design & UI Tools (2026) | INDEX",
+    title: "Best Web Design & UI Tools (2026) | WTF — Web Tools Finder",
     description:
       "Curated UI primitives, animation libraries, and 3D design tools for modern web applications.",
   },

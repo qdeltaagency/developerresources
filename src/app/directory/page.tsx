@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DirectoryView } from "@/components/DirectoryView";
 
 export const metadata: Metadata = {
-  title: "Complete Web Tools & Developer Directory (A–Z) | INDEX",
+  title: "Complete Web Tools & Developer Directory (A–Z)",
   description:
     "The complete A-Z directory of handpicked web tools, UI primitives, interaction engines, and developer resources.",
   keywords: [
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     canonical: "/directory",
   },
   openGraph: {
-    title: "Complete Web Tools & Developer Directory (A–Z) | INDEX",
+    title: "Complete Web Tools & Developer Directory (A–Z) | WTF — Web Tools Finder",
     description:
       "Explore all handpicked UI primitives, interaction engines, and developer tools organized alphabetically.",
     type: "website",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Complete Web Tools & Developer Directory (A–Z) | INDEX",
+    title: "Complete Web Tools & Developer Directory (A–Z) | WTF — Web Tools Finder",
     description:
       "Explore all handpicked UI primitives, interaction engines, and developer tools organized alphabetically.",
   },

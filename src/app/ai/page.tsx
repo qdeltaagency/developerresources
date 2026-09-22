@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DirectoryView } from "@/components/DirectoryView";
 
 export const metadata: Metadata = {
-  title: "Curated AI & Generative Tools for Web Developers | INDEX",
+  title: "Curated AI & Generative Tools for Web Developers",
   description:
     "Discover top generative UI platforms, AI code engines, and in-browser AI tools including Cursor AI, v0.dev, and Bolt.new.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "/ai",
   },
   openGraph: {
-    title: "Curated AI & Generative Tools for Web Developers | INDEX",
+    title: "Curated AI & Generative Tools for Web Developers | WTF — Web Tools Finder",
     description:
       "Handpicked generative UI and AI developer platforms for rapid modern prototyping.",
     type: "website",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Curated AI & Generative Tools for Web Developers | INDEX",
+    title: "Curated AI & Generative Tools for Web Developers | WTF — Web Tools Finder",
     description:
       "Handpicked generative UI and AI developer platforms for rapid modern prototyping.",
   },

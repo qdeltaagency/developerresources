@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DirectoryView } from "@/components/DirectoryView";
 
 export const metadata: Metadata = {
-  title: "Cloud, Database & DevOps Engines | INDEX",
+  title: "Cloud, Database & DevOps Engines",
   description:
     "Explore serverless databases, authentication systems, type-safe ORMs, and edge runtimes including Supabase, Clerk, Drizzle, and Cloudflare Workers.",
   keywords: [
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "/backend",
   },
   openGraph: {
-    title: "Cloud, Database & DevOps Engines | INDEX",
+    title: "Cloud, Database & DevOps Engines | WTF — Web Tools Finder",
     description:
       "Curated serverless databases, authentication engines, and edge hosting runtimes.",
     type: "website",
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cloud, Database & DevOps Engines | INDEX",
+    title: "Cloud, Database & DevOps Engines | WTF — Web Tools Finder",
     description:
       "Curated serverless databases, authentication engines, and edge hosting runtimes.",
   },

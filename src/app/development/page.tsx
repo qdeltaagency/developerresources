@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DirectoryView } from "@/components/DirectoryView";
 
 export const metadata: Metadata = {
-  title: "Top Web Development Tools & CSS Engines | INDEX",
+  title: "Top Web Development Tools & CSS Engines",
   description:
     "Explore high-performance developer utilities, state managers, WebGL pipelines, and modern CSS engines including Tailwind CSS v4, nuqs, and Three.js.",
   keywords: [
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     canonical: "/development",
   },
   openGraph: {
-    title: "Top Web Development Tools & CSS Engines | INDEX",
+    title: "Top Web Development Tools & CSS Engines | WTF — Web Tools Finder",
     description:
       "Curated engines, libraries, and utilities for high-performance web development.",
     type: "website",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Top Web Development Tools & CSS Engines | INDEX",
+    title: "Top Web Development Tools & CSS Engines | WTF — Web Tools Finder",
     description:
       "Curated engines, libraries, and utilities for high-performance web development.",
   },
